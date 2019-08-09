@@ -1,11 +1,9 @@
 package com.example.ergedd_android2.presenter;
 
-import com.example.ergedd_android2.Contract.BabyLookTabContract;
+import com.example.ergedd_android2.contract.BabyLookTabContract;
 import com.example.ergedd_android2.base.BasePresenter;
 import com.example.ergedd_android2.bean.BabyLookTabBean;
 import com.example.ergedd_android2.model.BabyLookModel;
-
-import java.util.List;
 
 public class BabyLookPresenter <V extends BabyLookTabContract.BabyLookView>
         extends BasePresenter<V> implements BabyLookTabContract.BabyLookPresenter,BabyLookTabContract.BabyLookModel.CallBack {

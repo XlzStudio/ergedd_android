@@ -1,6 +1,5 @@
 package com.example.ergedd_android2;
 
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentTransaction;
@@ -8,7 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
-import com.example.ergedd_android2.Constant.Constants;
+import com.example.ergedd_android2.constant.Constants;
 import com.example.ergedd_android2.base.BaseActivity;
 import com.example.ergedd_android2.base.BasePresenter;
 import com.example.ergedd_android2.fragments.BabyHearFragment;
@@ -19,7 +18,6 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 //Boss：李志凯
 //项目副经理：马屹延
