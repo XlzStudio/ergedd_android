@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/btn_babylook"
+        android:enabled="true"
+        android:icon="@drawable/bottom_bar_video_background"
+        android:title="@string/btn_babylook"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/btn_babyhear"
+        android:enabled="true"
+        android:icon="@drawable/bottom_bar_mine_background"
+        android:title="@string/btn_babyhear"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/btn_cache"
+        android:enabled="true"
+        android:icon="@drawable/bottom_bar_audio_background"
+        android:title="@string/btn_cache"
+        app:showAsAction="ifRoom" />
+
+
+
+
+</menu>

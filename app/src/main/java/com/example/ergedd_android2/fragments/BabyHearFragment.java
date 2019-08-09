@@ -12,23 +12,22 @@ import com.example.ergedd_android2.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class BabyLookFragment extends Fragment {
+public class BabyHearFragment extends Fragment {
 
 
-    public BabyLookFragment() {
+    public BabyHearFragment() {
         // Required empty public constructor
     }
-    public static BabyLookFragment newInstance() {
+    public static BabyHearFragment newInstance() {
 
-        return new BabyLookFragment();
+        return new BabyHearFragment();
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_baby_look, container, false);
+        return inflater.inflate(R.layout.fragment_baby_hear, container, false);
     }
 
 }

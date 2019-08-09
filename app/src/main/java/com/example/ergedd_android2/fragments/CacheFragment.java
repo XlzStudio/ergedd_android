@@ -28,6 +28,10 @@ public class CacheFragment extends Fragment {
     public CacheFragment() {
         // Required empty public constructor
     }
+    public static CacheFragment newInstance() {
+
+        return new CacheFragment();
+    }
 
 
     @Override

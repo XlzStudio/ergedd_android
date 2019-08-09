@@ -2,6 +2,9 @@ package com.example.ergedd_android2.utils;
 
 import android.util.Log;
 
+import com.example.ergedd_android2.app.Globle;
+import com.example.ergedd_android2.app.MyApp;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;

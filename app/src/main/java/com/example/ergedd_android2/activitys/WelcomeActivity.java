@@ -1,4 +1,4 @@
-package com.example.ergedd_android2;
+package com.example.ergedd_android2.activitys;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -7,6 +7,9 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.ergedd_android2.MainActivity;
+import com.example.ergedd_android2.R;
 
 import java.util.Timer;
 import java.util.TimerTask;
