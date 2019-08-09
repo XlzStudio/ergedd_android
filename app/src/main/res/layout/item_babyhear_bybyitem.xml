@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/babyitem_iv"
+        android:layout_width="70dp"
+        android:layout_height="70dp" />
+
+    <TextView
+        android:textSize="17dp"
+        android:layout_toRightOf="@id/babyitem_iv"
+        android:layout_alignTop="@id/babyitem_iv"
+        android:id="@+id/babyitem_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="手指家族" />
+
+    <TextView
+        android:id="@+id/babyitem_text"
+        android:layout_margin="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/babyitem_title"
+        android:layout_toRightOf="@id/babyitem_iv"
+        android:text="动动手指学英文" />
+
+    <ImageView
+        android:id="@+id/babyitem_music"
+        android:layout_toRightOf="@id/babyitem_iv"
+        android:layout_alignBottom="@id/babyitem_iv"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/icon_music_grey" />
+
+    <TextView
+        android:layout_toRightOf="@id/babyitem_music"
+        android:layout_alignTop="@id/babyitem_music"
+        android:id="@+id/count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="31首" />
+
+
+</RelativeLayout>
