@@ -87,6 +87,14 @@ public class HttpManager {
         @Override
         public Response intercept(Chain chain) throws IOException {
             Request request = chain.request();
+            Request.Builder builder = request.newBuilder()
+                    .addHeader("Time-Stamp", "1565270565")
+                    .addHeader("Device-Key", "00000000-4e86-7324-ef6b-6e9720b0bdd5")
+                    .addHeader("Version", "6.2.12")
+                    .addHeader("Authorization", "bberge_android:Android")
+                    .addHeader("channel", "qihu")
+                    .removeHeader("User-Agent")
+                    .addHeader("User-Agent", "apps/api");
             //这里就是说判读我们的网络条件，要是有网络的话我么就直接获取网络上面的数据，要是没有网络的话我么就去缓存里面取数据
             if (!HttpUtils.isNetworkAvailable(MyApp.getInstance())) {
                 request = request.newBuilder().cacheControl(CacheControl.FORCE_CACHE).build();
@@ -99,6 +107,7 @@ public class HttpManager {
                 return originalResponse.newBuilder()
                         // 清除头信息，因为服务器如果不支持，会返回一些干扰信息，不清除下面无法生效
                         .removeHeader("Pragma")
+
                         .header("Cache-Control", "public ,max-age=" + maxAge)
                         .build();
             } else {

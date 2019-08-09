@@ -2,6 +2,7 @@ package com.example.ergedd_android2.api;
 
 import com.example.ergedd_android2.base.BaseResponse;
 import com.example.ergedd_android2.bean.BabyLookTabBean;
+import com.example.ergedd_android2.bean.ListData;
 
 import java.util.List;
 
@@ -13,6 +14,9 @@ import retrofit2.http.Url;
 
 
 public interface ApiServer {
+
+    @GET
+    Observable<BaseResponse<List<ListData>>> get(@Url String url);
 /*
 * 第一个页面的Tablayout网络解析
 *http://api.ergedd.com/api/v1/album_categories?offset=0&limit=100&addition_album_count=20&channel=new
