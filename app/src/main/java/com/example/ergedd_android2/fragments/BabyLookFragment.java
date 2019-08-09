@@ -8,11 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.ergedd_android2.R;
+import com.example.ergedd_android2.base.BaseFragment;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class BabyLookFragment extends Fragment {
+public class BabyLookFragment extends BaseFragment {
 
 
     public BabyLookFragment() {
