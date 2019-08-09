@@ -2,14 +2,16 @@ package com.example.ergedd_android2.utils;
 
 import android.util.Log;
 
+import com.example.ergedd_android2.app.Globle;
+import com.example.ergedd_android2.app.MyApp;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.concurrent.TimeUnit;
 
-import jiyun.com.myapplication.app.Globle;
-import jiyun.com.myapplication.app.MyApp;
+
 
 import okhttp3.Cache;
 import okhttp3.CacheControl;
@@ -17,6 +19,7 @@ import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
