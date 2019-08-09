@@ -1,10 +1,6 @@
-package com.example.ergedd_android2.Contract;
+package com.example.ergedd_android2.contract;
 
 import com.example.ergedd_android2.bean.BabyLookTabBean;
-
-import java.util.List;
-
-
 
 
 public interface BabyLookTabContract {

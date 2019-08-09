@@ -1,4 +1,4 @@
-package com.example.ergedd_android2.Constant;
+package com.example.ergedd_android2.constant;
 
 public class Constants {
     public static final int TYPE_BABYLOOK = 0;

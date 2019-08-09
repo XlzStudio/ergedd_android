@@ -10,9 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.ergedd_android2.R;
-import com.example.ergedd_android2.adapter.VpAdapter;
-import com.example.ergedd_android2.bbtfragment.BabyItemFragment;
-import com.example.ergedd_android2.bbtfragment.HandpickFragment;
+import com.example.ergedd_android2.adapters.VpAdapter;
 
 import java.util.ArrayList;
 
