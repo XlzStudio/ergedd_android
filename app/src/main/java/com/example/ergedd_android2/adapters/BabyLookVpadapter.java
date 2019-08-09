@@ -12,9 +12,10 @@ import java.util.List;
 
 public class BabyLookVpadapter  extends FragmentPagerAdapter {
     private ArrayList<Fragment>list;
-    private List<BabyLookTabBean> tablist;
+    private List<BabyLookTabBean.DataBean> tablist;
 
-    public BabyLookVpadapter(FragmentManager fm, ArrayList<Fragment> list, List<BabyLookTabBean> tablist) {
+
+    public BabyLookVpadapter(FragmentManager fm, ArrayList<Fragment> list, List<BabyLookTabBean.DataBean> tablist) {
         super(fm);
         this.list = list;
         this.tablist = tablist;

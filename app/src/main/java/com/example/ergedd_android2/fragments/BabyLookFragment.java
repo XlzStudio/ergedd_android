@@ -40,6 +40,7 @@ public class BabyLookFragment extends BaseFragment<BabyLookTabContract.BabyLookV
     ViewPager babyLookVp;
     Unbinder unbinder;
     private ArrayList<Fragment> fragments;
+    private ArrayList<BabyLookTabBean.DataBean> babyLookTabBeans1;
 
 
     public BabyLookFragment() {
@@ -47,20 +48,20 @@ public class BabyLookFragment extends BaseFragment<BabyLookTabContract.BabyLookV
     }
 
     public static BabyLookFragment newInstance() {
-
         return new BabyLookFragment();
     }
 
 
     @Override
-    public void onTabSuccess(List<BabyLookTabBean> babyLookTabBeans) {
+    public void onTabSuccess(BabyLookTabBean babyLookTabBeans) {
         fragments = new ArrayList<>();
-        for (int i = 0; i < babyLookTabBeans.size(); i++) {
+
+        for (int i = 0; i < babyLookTabBeans.getData().size(); i++) {
 //            wxtab.addTab(wxtab.newTab().setText(wxTabBeans.get(i).getName()));
-            BabyLookInnerFragment babyLookInnerFragment = new BabyLookInnerFragment().bundle(babyLookTabBeans.get(i).getId());
+            BabyLookInnerFragment babyLookInnerFragment = new BabyLookInnerFragment().bundle(babyLookTabBeans.getData().get(i).getId());
             fragments.add(babyLookInnerFragment);
         }
-        BabyLookVpadapter babyLookVpadapter = new BabyLookVpadapter(getChildFragmentManager(), fragments, babyLookTabBeans);
+        BabyLookVpadapter babyLookVpadapter = new BabyLookVpadapter(getChildFragmentManager(),fragments,babyLookTabBeans.getData());
         babyLookVp.setAdapter(babyLookVpadapter);
         babyLookTab.setupWithViewPager(babyLookVp);
     }

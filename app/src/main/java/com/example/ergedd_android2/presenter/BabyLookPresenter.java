@@ -18,7 +18,7 @@ public class BabyLookPresenter <V extends BabyLookTabContract.BabyLookView>
     }
 
     @Override
-    public void onTabSuccess(List<BabyLookTabBean> babyLookTabBeans) {
+    public void onTabSuccess(BabyLookTabBean babyLookTabBeans) {
         mView.onTabSuccess(babyLookTabBeans);
     }
 

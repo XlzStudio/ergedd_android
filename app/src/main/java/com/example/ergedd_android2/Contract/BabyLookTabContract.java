@@ -10,7 +10,7 @@ import java.util.List;
 public interface BabyLookTabContract {
     interface BabyLookView {
 
-        void onTabSuccess(List<BabyLookTabBean> babyLookTabBeans);
+        void onTabSuccess(BabyLookTabBean babyLookTabBeans);
        // void onSuccess(WxDataBean wxDataBean);
 
         void onFail(String msg);
@@ -24,7 +24,7 @@ public interface BabyLookTabContract {
 
         interface BabyLookModel{
             interface CallBack{
-                void onTabSuccess(List<BabyLookTabBean> babyLookTabBeans);
+                void onTabSuccess(BabyLookTabBean babyLookTabBeans);
                 //void onSuccess(WxDataBean wxDataBean);
 
 

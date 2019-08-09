@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class CacheVpAdapter extends FragmentPagerAdapter {
     private ArrayList<Fragment>cachelist;
-    private String[]s={"",""};
+
 
 
     public CacheVpAdapter(FragmentManager fm, ArrayList<Fragment> cachelist) {

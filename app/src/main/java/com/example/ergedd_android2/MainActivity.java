@@ -91,7 +91,7 @@ public class MainActivity extends BaseActivity {
                 transaction.show(babyHearFragment);
                 break;
             case Constants.TYPE_CACHE:
-                toolbar.setTitle(R.string.navigation);
+                toolbar.setTitle(R.string.btn_cache);
                 if (cacheFragment == null) {
                     cacheFragment = CacheFragment.newInstance();
                     transaction.add(R.id.container, cacheFragment);
