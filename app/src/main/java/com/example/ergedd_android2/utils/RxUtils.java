@@ -1,6 +1,9 @@
 package com.example.ergedd_android2.utils;
 
 
+import com.example.ergedd_android2.base.ApiException;
+import com.example.ergedd_android2.base.BaseResponse;
+
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
@@ -9,9 +12,6 @@ import io.reactivex.ObservableTransformer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
-import jiyun.com.myapplication.base.ApiException;
-import jiyun.com.myapplication.base.BaseResponse;
-
 
 public class RxUtils {
 
