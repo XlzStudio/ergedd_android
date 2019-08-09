@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/babylook_img"
+        android:layout_width="120dp"
+        android:layout_height="70dp" />
+
+    <TextView
+
+        android:id="@+id/babylook_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/babyitem_iv"
+        android:layout_marginLeft="20sp"
+        android:layout_toRightOf="@id/babylook_img"
+        android:text="手指家族"
+        android:textColor="@color/black"
+        android:textSize="17dp" />
+
+    <TextView
+        android:id="@+id/babylook_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/babylook_title"
+        android:layout_marginLeft="20sp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/babylook_img"
+        android:text="动动手指学英文" />
+
+    <TextView
+        android:id="@+id/babylook_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/babylook_text"
+        android:layout_marginLeft="20sp"
+        android:layout_marginTop="8dp"
+        android:layout_toRightOf="@id/babylook_img"
+        android:text="31首" />
+
+
+</RelativeLayout>

@@ -48,9 +48,7 @@ public class BabyLookFragment extends BaseFragment<BabyLookTabContract.BabyLookV
     @Override
     public void onTabSuccess(BabyLookTabBean babyLookTabBeans) {
         fragments = new ArrayList<>();
-
         for (int i = 0; i < babyLookTabBeans.getData().size(); i++) {
-//            wxtab.addTab(wxtab.newTab().setText(wxTabBeans.get(i).getName()));
             BabyLookInnerFragment babyLookInnerFragment = new BabyLookInnerFragment().bundle(babyLookTabBeans.getData().get(i).getId());
             fragments.add(babyLookInnerFragment);
         }
