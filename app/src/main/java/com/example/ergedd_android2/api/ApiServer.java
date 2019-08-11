@@ -11,7 +11,6 @@ import com.example.ergedd_android2.bean.BabyLookTabBean;
 import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
-import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 import retrofit2.http.Url;
@@ -27,6 +26,18 @@ public interface ApiServer {
     @Headers("Cache-Control: public, max-age=28800")
     @GET
     Observable<BabyLookTabBean> getlookTab(@Url String url, @Query("channel") String channel, @Query("offset") int offset, @Query("limit") int limit, @Query("addition_album_count") int addition_album_count);
+
+
+
+
+/*
+* 第二个页面的精选底部列表网络解析
+*http://api.ergedd.com/api/v1/audio_categories?channel=original
+* */
+@Headers("Cache-Control: public, max-age=28800")
+@GET
+Observable<HandPicBottomListBean>getBottomData(@Url String url, @Query("channel") String channel);
+
 
     /*
      * 宝宝听页面精选下半部分及tab栏接口
@@ -61,19 +72,5 @@ Observable<BabyLookSiftThreeImgBean> getLookSift(@Url String url, @Query("channe
     //http://api.t.ergedd.com/api/v1/album_categories/1/albums?channel=new&offset=0&limit=20&sensitive=8
     //宝宝看tab
     @GET
-    Observable<BabyLookInnerBean> getLookInner(@Url String url, @Query("channel") String channel, @Query("offset") int offset, @Query("limit") int limit, @Query("sensitive") int sensitive);
-
-    /*
-     * 宝宝听页面fragment复用子条目点击详情接口
-     *http://api.ergedd.com/getAudioByPlaylistId?apid=338&offset=0&limit=20&os=3&code=20618&uuid=88f90448-1cac-4f10-8e80-34cafd428ce8&channel=qihu
-     * */
-    @POST
-    @Headers({"Cache-Control:public,max-age=28800",
-            "Time-Stamp:1565442159",
-            "Device-Key:00000000-4e86-7324-ef6b-6e9720b0bdd5",
-            "Version:2.6.18",
-            "Authorization:bberge_android:Android",
-            "channel:qihu",
-            "User-Agent:android okhttp 3.3.1"})
-    Observable<BabyHearItemBean> postBabyHearItem1();
+    Observable<BabyLookInnerBean> getLookInner(@Url String url,@Query("channel") String channel,@Query("offset") int offset,@Query("limit") int limit,@Query("sensitive") int sensitive);
 }
