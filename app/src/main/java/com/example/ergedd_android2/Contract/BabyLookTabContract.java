@@ -1,4 +1,4 @@
-package com.example.ergedd_android2.contract;
+package com.example.ergedd_android2.Contract;
 
 import com.example.ergedd_android2.bean.BabyLookTabBean;
 

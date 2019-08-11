@@ -2,7 +2,7 @@ package com.example.ergedd_android2.bean;
 
 import java.util.List;
 
-public class BabyLookGridBean  {
+public class BabyLookSiftGridBean {
 
     /**
      * success : true

@@ -76,7 +76,6 @@ public class MainActivity extends BaseActivity {
         switch (index) {
             case Constants
                     .TYPE_BABYLOOK:
-                toolbar.setTitle(R.string.btn_babylook);
                 if (babyLookFragment == null) {
                     babyLookFragment = BabyLookFragment.newInstance();
                     transaction.add(R.id.container, babyLookFragment);
@@ -84,7 +83,6 @@ public class MainActivity extends BaseActivity {
                 transaction.show(babyLookFragment);
                 break;
             case Constants.TYPE_BABYHEAR:
-                toolbar.setTitle(R.string.btn_babyhear);
                 if (babyHearFragment == null) {
                     babyHearFragment = BabyHearFragment.newInstance();
                     transaction.add(R.id.container, babyHearFragment);
@@ -92,7 +90,6 @@ public class MainActivity extends BaseActivity {
                 transaction.show(babyHearFragment);
                 break;
             case Constants.TYPE_CACHE:
-                toolbar.setTitle(R.string.btn_cache);
                 if (cacheFragment == null) {
                     cacheFragment = CacheFragment.newInstance();
                     transaction.add(R.id.container, cacheFragment);
@@ -129,7 +126,7 @@ public class MainActivity extends BaseActivity {
     }
 
     private void initToobar() {
-        toolbar.setTitle("主页");
+        toolbar.setTitle("");
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         setSupportActionBar(toolbar);
     }

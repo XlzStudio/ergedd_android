@@ -1,14 +1,17 @@
 package com.example.ergedd_android2.Contract;
 
+import com.example.ergedd_android2.bean.BabyLookSiftItemBean;
+import com.example.ergedd_android2.bean.BabyLookSiftGridBean;
+import com.example.ergedd_android2.bean.BabyLookSiftThreeImgBean;
 import com.example.ergedd_android2.bean.BabyLookTabBean;
 
 
-public interface BabyLookTabContract {
+public interface BabyLookSiftContract {
     interface BabyLookView {
 
-        void onTabSuccess(BabyLookTabBean babyLookTabBeans);
-       // void onSuccess(WxDataBean wxDataBean);
-
+        void onImgSuccess(BabyLookSiftThreeImgBean babyLookSiftThreeImgBean);
+        void onGridSuccess(BabyLookSiftGridBean babyLookGridBean);
+        void onItemSuccess(BabyLookSiftItemBean babyLookSiftItemBean);
         void onFail(String msg);
     }
 
@@ -20,9 +23,9 @@ public interface BabyLookTabContract {
 
         interface BabyLookModel{
             interface CallBack{
-                void onTabSuccess(BabyLookTabBean babyLookTabBeans);
-                //void onSuccess(WxDataBean wxDataBean);
-
+                void onImgSuccess(BabyLookSiftThreeImgBean babyLookSiftThreeImgBean);
+                void onGridSuccess(BabyLookSiftGridBean babyLookGridBean);
+                void onItemSuccess(BabyLookSiftItemBean babyLookSiftItemBean);
 
 
                 void onFail(String msg);

@@ -3,32 +3,75 @@ package com.example.ergedd_android2.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
+import com.example.ergedd_android2.Contract.BabyLookInnerContract;
 import com.example.ergedd_android2.R;
+import com.example.ergedd_android2.adapters.BabyLookInnerAdapter;
+import com.example.ergedd_android2.base.BaseFragment;
+import com.example.ergedd_android2.bean.BabyLookInnerBean;
+import com.example.ergedd_android2.presenter.BabyLookInnerPresenter;
+
+import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class BabyLookInnerFragment extends Fragment {
-private int cid;
+public class BabyLookInnerFragment extends BaseFragment<BabyLookInnerFragment, BabyLookInnerPresenter> implements BabyLookInnerContract.BabyLookView {
+    @BindView(R.id.recyclerview)
+    RecyclerView recyclerview;
+    Unbinder unbinder;
+    private int cid;
+    private BabyLookInnerAdapter babyLookInnerAdapter;
 
-    public BabyLookInnerFragment() {
-        // Required empty public constructor
-    }
-    public BabyLookInnerFragment bundle(int id) {
-        this.cid = id;
-        return new BabyLookInnerFragment();
+    public void bundle(int id) {
+        cid=id;
     }
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_baby_look_inner, container, false);
+    public void onInnerSuccess(BabyLookInnerBean babyLookInnerBean) {
+        List<BabyLookInnerBean.DataBean> data = babyLookInnerBean.getData();
+        babyLookInnerAdapter.initData(data);
     }
+
+    @Override
+    public void onFail(String msg) {
+
+    }
+
+    @Override
+    protected BabyLookInnerPresenter createPresenter() {
+        return new BabyLookInnerPresenter();
+    }
+
+    private static final String TAG = "BabyLookInnerFragment";
+    @Override
+    protected int createLayout() {
+        Log.d(TAG, "createLayout: "+cid);
+        return R.layout.fragment_baby_look_inner;
+    }
+
+    @Override
+    protected void initViewAndData() {
+        recyclerview.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayout.VERTICAL));
+        recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
+        babyLookInnerAdapter = new BabyLookInnerAdapter(this);
+        recyclerview.setAdapter(babyLookInnerAdapter);
+
+        mPresenter.BabyLookHttp(cid);
+    }
+
 
 }

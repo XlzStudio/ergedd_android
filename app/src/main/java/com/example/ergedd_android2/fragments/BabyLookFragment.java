@@ -5,7 +5,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 
-import com.example.ergedd_android2.contract.BabyLookTabContract;
+import com.example.ergedd_android2.Contract.BabyLookTabContract;
 import com.example.ergedd_android2.R;
 import com.example.ergedd_android2.adapters.BabyLookVpadapter;
 import com.example.ergedd_android2.base.BaseFragment;
@@ -34,6 +34,7 @@ public class BabyLookFragment extends BaseFragment<BabyLookTabContract.BabyLookV
     Unbinder unbinder;
     private ArrayList<Fragment> fragments;
     private ArrayList<BabyLookTabBean.DataBean> babyLookTabBeans1;
+    private ArrayList<String> strings;
 
 
     public BabyLookFragment() {
@@ -47,12 +48,14 @@ public class BabyLookFragment extends BaseFragment<BabyLookTabContract.BabyLookV
 
     @Override
     public void onTabSuccess(BabyLookTabBean babyLookTabBeans) {
-        fragments = new ArrayList<>();
+
         for (int i = 0; i < babyLookTabBeans.getData().size(); i++) {
-            BabyLookInnerFragment babyLookInnerFragment = new BabyLookInnerFragment().bundle(babyLookTabBeans.getData().get(i).getId());
+            BabyLookInnerFragment babyLookInnerFragment = new BabyLookInnerFragment();
+            babyLookInnerFragment.bundle(babyLookTabBeans.getData().get(i).getId());
             fragments.add(babyLookInnerFragment);
+            strings.add(babyLookTabBeans.getData().get(i).getName());
         }
-        BabyLookVpadapter babyLookVpadapter = new BabyLookVpadapter(getChildFragmentManager(),fragments,babyLookTabBeans.getData());
+        BabyLookVpadapter babyLookVpadapter = new BabyLookVpadapter(getChildFragmentManager(), fragments,strings);
         babyLookVp.setAdapter(babyLookVpadapter);
         babyLookTab.setupWithViewPager(babyLookVp);
     }
@@ -75,7 +78,17 @@ public class BabyLookFragment extends BaseFragment<BabyLookTabContract.BabyLookV
     @Override
     protected void initViewAndData() {
         mPresenter.BabyLookHttp();
+
+        fragments = new ArrayList<>();
+        BabyLookSiftFragment babyLookSiftFragment = new BabyLookSiftFragment();
+        fragments.add(babyLookSiftFragment);
+
+        strings = new ArrayList<>();
+        strings.add("精选");
+
     }
+
+
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void getData(String title) {
 

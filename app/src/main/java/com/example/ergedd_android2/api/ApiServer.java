@@ -1,8 +1,15 @@
 package com.example.ergedd_android2.api;
 
+import com.example.ergedd_android2.bean.BabyLookInnerBean;
+import com.example.ergedd_android2.bean.BabyLookSiftItemBean;
+import com.example.ergedd_android2.bean.BabyLookSiftGridBean;
+import com.example.ergedd_android2.bean.BabyLookSiftThreeImgBean;
 import com.example.ergedd_android2.bean.BabyHearBean;
 import com.example.ergedd_android2.bean.BabyHearItemBean;
 import com.example.ergedd_android2.bean.BabyLookTabBean;
+import com.example.ergedd_android2.bean.ListData;
+
+import java.util.List;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
@@ -36,4 +43,25 @@ public interface ApiServer {
      * */
     @GET("audio_categories/{id}/playlists?channel=new&offset=0&limit=20")
     Observable<BabyHearItemBean> getBabyHearItem(@Path("id") int id);
+
+//http://api.t.ergedd.com/api/v1/albums/33/videos?channel=new&offset=0&limit=20&sensitive=8
+//宝宝看精选3个图片网路请求
+@GET
+Observable<BabyLookSiftThreeImgBean> getLookSift(@Url String url, @Query("channel") String channel, @Query("offset") int offset, @Query("limit") int limit, @Query("sensitive") int sensitive);
+
+
+//http://api.t.ergedd.com/api/v1/albums/home_recommended?channel=new&offset=0&limit=16
+// 宝宝看详情GridView
+    @GET
+    Observable<BabyLookSiftGridBean> getLookGrid(@Url String url, @Query("channel") String channel, @Query("offset") int offset, @Query("limit") int limit);
+
+    //http://api.ergedd.com/api/v1/home_items?type=1&channel=new&offset=0&limit=20&sensitive=8
+    //宝宝看详情item
+    @GET
+    Observable<BabyLookSiftItemBean> getLookItemUp(@Url String url, @Query("type") int type, @Query("channel") String channel, @Query("offset") int offset, @Query("limit") int limit, @Query("sensitive") int sensitive);
+
+    //http://api.t.ergedd.com/api/v1/album_categories/1/albums?channel=new&offset=0&limit=20&sensitive=8
+    //宝宝看tab
+    @GET
+    Observable<BabyLookInnerBean> getLookInner(@Url String url,@Query("channel") String channel,@Query("offset") int offset,@Query("limit") int limit,@Query("sensitive") int sensitive);
 }

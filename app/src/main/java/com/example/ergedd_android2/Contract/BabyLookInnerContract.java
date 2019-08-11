@@ -1,12 +1,13 @@
 package com.example.ergedd_android2.Contract;
 
+import com.example.ergedd_android2.bean.BabyLookInnerBean;
 import com.example.ergedd_android2.bean.BabyLookTabBean;
 
 
-public interface BabyLookTabContract {
+public interface BabyLookInnerContract {
     interface BabyLookView {
 
-        void onTabSuccess(BabyLookTabBean babyLookTabBeans);
+        void onInnerSuccess(BabyLookInnerBean babyLookInnerBean);
        // void onSuccess(WxDataBean wxDataBean);
 
         void onFail(String msg);
@@ -20,7 +21,7 @@ public interface BabyLookTabContract {
 
         interface BabyLookModel{
             interface CallBack{
-                void onTabSuccess(BabyLookTabBean babyLookTabBeans);
+                void onInnerSuccess(BabyLookInnerBean babyLookInnerBean);
                 //void onSuccess(WxDataBean wxDataBean);
 
 
