@@ -60,12 +60,10 @@ public class MainActivity extends BaseActivity {
                     case R.id.btn_cache:
                         showFragment(Constants.TYPE_CACHE);
                         break;
-
                 }
                 return true;
             }
         });
-
     }
 
     private void showFragment(int index) {
@@ -74,8 +72,7 @@ public class MainActivity extends BaseActivity {
         hideFragment(transaction);
         mLastFgIndex = index;
         switch (index) {
-            case Constants
-                    .TYPE_BABYLOOK:
+            case Constants.TYPE_BABYLOOK:
                 if (babyLookFragment == null) {
                     babyLookFragment = BabyLookFragment.newInstance();
                     transaction.add(R.id.container, babyLookFragment);
@@ -102,6 +99,7 @@ public class MainActivity extends BaseActivity {
         transaction.commit();
 
     }
+
     private void hideFragment(FragmentTransaction transaction) {
         switch (mLastFgIndex) {
             case Constants.TYPE_BABYLOOK:
@@ -119,7 +117,6 @@ public class MainActivity extends BaseActivity {
                     transaction.hide(cacheFragment);
                 }
                 break;
-
             default:
                 break;
         }
@@ -140,11 +137,9 @@ public class MainActivity extends BaseActivity {
     protected BasePresenter createPresenter() {
         return null;
     }
+
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void getData(String title) {
 
     }
-
-
-
 }
