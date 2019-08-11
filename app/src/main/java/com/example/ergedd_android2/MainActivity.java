@@ -7,9 +7,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
-import com.example.ergedd_android2.constant.Constants;
 import com.example.ergedd_android2.base.BaseActivity;
 import com.example.ergedd_android2.base.BasePresenter;
+import com.example.ergedd_android2.constant.Constants;
 import com.example.ergedd_android2.fragments.BabyHearFragment;
 import com.example.ergedd_android2.fragments.BabyLookFragment;
 import com.example.ergedd_android2.fragments.CacheFragment;
@@ -19,8 +19,11 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 
-//Boss：李志凯
-//项目副经理：马屹延
+//项目总经理：马屹延
+//项目总监：杨明
+//项目负责人：张九红
+//后勤：李志凯
+
 public class MainActivity extends BaseActivity {
 
     @BindView(R.id.toolbar)
@@ -73,7 +76,6 @@ public class MainActivity extends BaseActivity {
         switch (index) {
             case Constants
                     .TYPE_BABYLOOK:
-                toolbar.setTitle(R.string.btn_babylook);
                 if (babyLookFragment == null) {
                     babyLookFragment = BabyLookFragment.newInstance();
                     transaction.add(R.id.container, babyLookFragment);
@@ -81,7 +83,6 @@ public class MainActivity extends BaseActivity {
                 transaction.show(babyLookFragment);
                 break;
             case Constants.TYPE_BABYHEAR:
-                toolbar.setTitle(R.string.btn_babyhear);
                 if (babyHearFragment == null) {
                     babyHearFragment = BabyHearFragment.newInstance();
                     transaction.add(R.id.container, babyHearFragment);
@@ -89,7 +90,6 @@ public class MainActivity extends BaseActivity {
                 transaction.show(babyHearFragment);
                 break;
             case Constants.TYPE_CACHE:
-                toolbar.setTitle(R.string.btn_cache);
                 if (cacheFragment == null) {
                     cacheFragment = CacheFragment.newInstance();
                     transaction.add(R.id.container, cacheFragment);
@@ -126,7 +126,7 @@ public class MainActivity extends BaseActivity {
     }
 
     private void initToobar() {
-        toolbar.setTitle("主页");
+        toolbar.setTitle("");
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         setSupportActionBar(toolbar);
     }

@@ -5,93 +5,99 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.view.LayoutInflater;
+import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 
+import com.example.ergedd_android2.Contract.BabyHearContract;
 import com.example.ergedd_android2.R;
 import com.example.ergedd_android2.adapters.VpAdapter;
+import com.example.ergedd_android2.base.BaseFragment;
+import com.example.ergedd_android2.bean.BabyHearBean;
+import com.example.ergedd_android2.presenter.BabyHearPresenter;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
+import butterknife.Unbinder;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class BabyHearFragment extends Fragment {
+public class BabyHearFragment<V extends BabyHearContract.BabyHearView> extends BaseFragment<BabyHearContract.BabyHearView, BabyHearPresenter<BabyHearContract.BabyHearView>> implements BabyHearContract.BabyHearView {
 
 
+    @BindView(R.id.babyhear_tab)
+    TabLayout babyhear_tab;
+    @BindView(R.id.babyhear_vp)
+    ViewPager babyhear_vp;
     private View view;
-    private TabLayout babyhear_tab;
-    private ViewPager babyhear_vp;
     private ArrayList<Fragment> fs;
     private ArrayList<String> title;
+    private Unbinder unbinder;
+    private static final String TAG = "BabyHearFragment";
+
 
     public BabyHearFragment() {
         // Required empty public constructor
     }
+
+
     public static BabyHearFragment newInstance() {
+
         return new BabyHearFragment();
     }
 
+    @Override
+    protected int createLayout() {
+        return R.layout.fragment_baby_hear;
+    }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View inflate = inflater.inflate(R.layout.fragment_baby_hear, container, false);
-        initView(inflate);
-        return inflate;
-    }
-
-    private void initView(View inflate) {
-        babyhear_tab = (TabLayout) inflate.findViewById(R.id.babyhear_tab);
-        babyhear_vp = (ViewPager) inflate.findViewById(R.id.babyhear_vp);
-
+    protected void initViewAndData() {
         fs = new ArrayList<>();
         title = new ArrayList<>();
-        initTitle();
-        initFragment();
+        mPresenter.http();
     }
 
-    private void initFragment() {
+    @Override
+    protected BabyHearPresenter createPresenter() {
+        return new BabyHearPresenter();
+    }
+
+    @Override
+    public void showSuccess(BabyHearBean data) {
         fs.add(new HandpickFragment());
-        for (int i = 0; i <title.size()-1; i++) {
-            fs.add(new BabyItemFragment());
+        title.add("精选");
+        List<BabyHearBean.DataBean> data1 = data.getData();
+        for (int i = 0; i <data1 .size(); i++) {
+            BabyItemFragment babyItemFragment = new BabyItemFragment();
+            Bundle bundle = new Bundle();
+            bundle.putInt("id",data1.get(i).getId());
+            babyItemFragment.setArguments(bundle);
+            fs.add(babyItemFragment);
+            title.add(data1.get(i).getName());
         }
-        VpAdapter vpAdapter = new VpAdapter(getChildFragmentManager(), fs, title);
+        VpAdapter vpAdapter = new VpAdapter(getChildFragmentManager(), fs, this.title);
         babyhear_vp.setAdapter(vpAdapter);
-        babyhear_tab.addTab(babyhear_tab.newTab().setText(title.get(0)));
-        babyhear_tab.addTab(babyhear_tab.newTab().setText(title.get(1)));
-        babyhear_tab.addTab(babyhear_tab.newTab().setText(title.get(2)));
-        babyhear_tab.addTab(babyhear_tab.newTab().setText(title.get(3)));
-        babyhear_tab.addTab(babyhear_tab.newTab().setText(title.get(4)));
-        babyhear_tab.addTab(babyhear_tab.newTab().setText(title.get(5)));
-        babyhear_tab.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                int position = tab.getPosition();
-                babyhear_vp.setCurrentItem(position);
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
-        babyhear_vp.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(babyhear_tab));
+        babyhear_tab.setupWithViewPager(babyhear_vp);
     }
 
-    private void initTitle() {
-        title.add("精选");
-        title.add("儿歌");
-        title.add("故事");
-        title.add("英文");
-        title.add("国学");
-        title.add("纯音乐");
+    @Override
+    public void showError(String error) {
+        Log.e(TAG, "showError: "+error);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
+    }
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void getData(String title) {
+
     }
 }
