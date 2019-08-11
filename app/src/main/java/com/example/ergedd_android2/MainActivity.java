@@ -1,6 +1,5 @@
 package com.example.ergedd_android2;
 
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentTransaction;
@@ -85,7 +84,6 @@ public class MainActivity extends BaseActivity {
                         toolbar.setBackgroundResource(R.color.white);
                         break;
 
-
                 }
                 return true;
             }
@@ -155,8 +153,6 @@ public class MainActivity extends BaseActivity {
         toolbar.setTitle("");
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         setSupportActionBar(toolbar);
-
-        //toolbar.setNavigationIcon();
     }
 
     @Override
@@ -173,6 +169,7 @@ public class MainActivity extends BaseActivity {
     public void getData(String title) {
 
     }
+
 
 
 }
