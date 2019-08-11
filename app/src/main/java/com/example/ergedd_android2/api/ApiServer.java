@@ -1,6 +1,8 @@
 package com.example.ergedd_android2.api;
 
 import com.example.ergedd_android2.bean.BabyLookTabBean;
+import com.example.ergedd_android2.bean.HandPicAlbumBean;
+import com.example.ergedd_android2.bean.HandPicBottomListBean;
 import com.example.ergedd_android2.bean.ListData;
 
 import java.util.List;
@@ -22,4 +24,24 @@ public interface ApiServer {
 @Headers("Cache-Control: public, max-age=28800")
 @GET
 Observable<BabyLookTabBean>getlookTab(@Url String url,@Query("channel") String channel, @Query("offset") int offset, @Query("limit") int limit, @Query("addition_album_count") int addition_album_count);
+
+
+/*
+* 第二个页面的精选专辑网络解析
+*http://api.ergedd.com/api/v1/audio_playlists/excellent
+* */
+@Headers("Cache-Control: public, max-age=28800")
+@GET
+Observable<HandPicAlbumBean>getAlbum(@Url String url, @Query("channel") String channel);
+
+
+/*
+* 第二个页面的精选底部列表网络解析
+*http://api.ergedd.com/api/v1/audio_categories?channel=original
+* */
+@Headers("Cache-Control: public, max-age=28800")
+@GET
+Observable<HandPicBottomListBean>getBottomData(@Url String url, @Query("channel") String channel);
+
+
 }
