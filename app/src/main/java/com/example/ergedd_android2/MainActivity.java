@@ -7,9 +7,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
-import com.example.ergedd_android2.constant.Constants;
 import com.example.ergedd_android2.base.BaseActivity;
 import com.example.ergedd_android2.base.BasePresenter;
+import com.example.ergedd_android2.constant.Constants;
 import com.example.ergedd_android2.fragments.BabyHearFragment;
 import com.example.ergedd_android2.fragments.BabyLookFragment;
 import com.example.ergedd_android2.fragments.CacheFragment;
@@ -19,8 +19,11 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 
-//Boss：李志凯
-//项目副经理：马屹延
+//项目总经理：马屹延
+//项目总监：杨明
+//项目负责人：张九红
+//后勤：李志凯
+
 public class MainActivity extends BaseActivity {
 
     @BindView(R.id.toolbar)

@@ -8,8 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-public abstract class BaseFragment
-        <V, P extends BasePresenter<V>> extends SimpleFragment {
+public abstract class BaseFragment<V, P extends BasePresenter<V>> extends SimpleFragment {
 
     public P mPresenter;
 

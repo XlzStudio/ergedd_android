@@ -8,8 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import org.greenrobot.eventbus.EventBus;
-
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
@@ -26,7 +24,7 @@ public abstract class SimpleFragment extends Fragment {
         bind = ButterKnife.bind(this, view);
 
         //注册
-        EventBus.getDefault().register(this);
+//        EventBus.getDefault().register(this);
 
         initViewAndData();
         return view;
@@ -44,6 +42,6 @@ public abstract class SimpleFragment extends Fragment {
             bind.unbind();
         }
         //解绑
-        EventBus.getDefault().unregister(this);
+//        EventBus.getDefault().unregister(this);
     }
 }
