@@ -22,7 +22,6 @@ import com.example.ergedd_android2.base.BaseFragment;
 import com.example.ergedd_android2.bean.BabyLookTabBean;
 import com.example.ergedd_android2.bean.HandPicAlbumBean;
 import com.example.ergedd_android2.bean.HandPicBottomListBean;
-import com.example.ergedd_android2.contract.BabyLookTabContract;
 import com.example.ergedd_android2.presenter.HandPickPresenter;
 
 import java.util.List;

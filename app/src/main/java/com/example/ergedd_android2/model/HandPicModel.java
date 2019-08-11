@@ -8,7 +8,6 @@ import com.example.ergedd_android2.base.BaseObsever;
 import com.example.ergedd_android2.bean.BabyLookTabBean;
 import com.example.ergedd_android2.bean.HandPicAlbumBean;
 import com.example.ergedd_android2.bean.HandPicBottomListBean;
-import com.example.ergedd_android2.contract.BabyLookTabContract;
 import com.example.ergedd_android2.utils.HttpManager;
 import com.example.ergedd_android2.utils.RxUtils;
 

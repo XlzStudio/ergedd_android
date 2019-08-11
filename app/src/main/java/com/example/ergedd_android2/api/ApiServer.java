@@ -81,6 +81,12 @@ Observable<BabyLookSiftThreeImgBean> getLookSift(@Url String url, @Query("channe
     @GET
     Observable<BabyLookSiftItemBean> getLookItemUp(@Url String url, @Query("type") int type, @Query("channel") String channel, @Query("offset") int offset, @Query("limit") int limit, @Query("sensitive") int sensitive);
 
+
+
+
+
+    
+
     //http://api.t.ergedd.com/api/v1/album_categories/1/albums?channel=new&offset=0&limit=20&sensitive=8
     //宝宝看tab
     @GET

@@ -1,11 +1,15 @@
 package com.example.ergedd_android2;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.ergedd_android2.base.BaseActivity;
 import com.example.ergedd_android2.base.BasePresenter;
@@ -18,6 +22,7 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 //项目总经理：马屹延
 //项目总监：杨明
@@ -32,6 +37,12 @@ public class MainActivity extends BaseActivity {
     FrameLayout container;
     @BindView(R.id.bottom_navig)
     BottomNavigationView bottomNavig;
+    @BindView(R.id.background)
+    ImageView background;
+    @BindView(R.id.test)
+    TextView test;
+    @BindView(R.id.setting)
+    ImageView setting;
     private int mCurrentFgIndex = 0;
     private int mLastFgIndex = -1;
     private BabyLookFragment babyLookFragment;
@@ -53,13 +64,27 @@ public class MainActivity extends BaseActivity {
                 switch (menuItem.getItemId()) {
                     case R.id.btn_babylook:
                         showFragment(Constants.TYPE_BABYLOOK);
+                        toolbar.setBackgroundResource(R.mipmap.icon_theme_header);
+                        background.setVisibility(View.INVISIBLE);
+                        test.setVisibility(View.INVISIBLE);
+                        setting.setVisibility(View.INVISIBLE);
                         break;
                     case R.id.btn_babyhear:
                         showFragment(Constants.TYPE_BABYHEAR);
+                        toolbar.setBackgroundResource(R.mipmap.icon_theme_header);
+                        background.setVisibility(View.INVISIBLE);
+                        background.setVisibility(View.INVISIBLE);
+                        test.setVisibility(View.INVISIBLE);
+                        setting.setVisibility(View.INVISIBLE);
                         break;
                     case R.id.btn_cache:
                         showFragment(Constants.TYPE_CACHE);
+                        background.setVisibility(View.VISIBLE);
+                        test.setVisibility(View.VISIBLE);
+                        setting.setVisibility(View.VISIBLE);
+                        toolbar.setBackgroundResource(R.color.white);
                         break;
+
 
                 }
                 return true;
@@ -102,6 +127,7 @@ public class MainActivity extends BaseActivity {
         transaction.commit();
 
     }
+
     private void hideFragment(FragmentTransaction transaction) {
         switch (mLastFgIndex) {
             case Constants.TYPE_BABYLOOK:
@@ -129,6 +155,8 @@ public class MainActivity extends BaseActivity {
         toolbar.setTitle("");
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         setSupportActionBar(toolbar);
+
+        //toolbar.setNavigationIcon();
     }
 
     @Override
@@ -140,11 +168,11 @@ public class MainActivity extends BaseActivity {
     protected BasePresenter createPresenter() {
         return null;
     }
+
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void getData(String title) {
 
     }
-
 
 
 }

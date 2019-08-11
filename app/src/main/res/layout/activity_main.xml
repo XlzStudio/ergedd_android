@@ -12,6 +12,38 @@
         android:background="@mipmap/icon_theme_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
+          <RelativeLayout
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:padding="8dp">
+
+              <ImageView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:src="@mipmap/phone_app_logo"
+                  android:layout_gravity="center"
+                  android:visibility="invisible"
+                  android:layout_centerInParent="true"
+                  android:id="@+id/background"/>
+
+              <TextView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="清理缓存"
+                  android:visibility="invisible"
+                  android:textColor="@color/green"
+                  android:layout_alignParentRight="true"
+                  android:id="@+id/test" />
+
+              <ImageView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:visibility="invisible"
+                  android:src="@mipmap/setting_unpressed"
+                  android:id="@+id/setting"/>
+          </RelativeLayout>
+
     </android.support.v7.widget.Toolbar>
 
     <FrameLayout
