@@ -7,6 +7,8 @@ import com.example.ergedd_android2.bean.BabyLookSiftGridBean;
 import com.example.ergedd_android2.bean.BabyLookSiftItemBean;
 import com.example.ergedd_android2.bean.BabyLookSiftThreeImgBean;
 import com.example.ergedd_android2.bean.BabyLookTabBean;
+import com.example.ergedd_android2.bean.HandPicAlbumBean;
+import com.example.ergedd_android2.bean.HandPicBottomListBean;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
@@ -70,9 +72,16 @@ Observable<BabyLookSiftThreeImgBean> getLookSift(@Url String url, @Query("channe
     Observable<BabyLookSiftItemBean> getLookItemUp(@Url String url, @Query("type") int type, @Query("channel") String channel, @Query("offset") int offset, @Query("limit") int limit, @Query("sensitive") int sensitive);
 
 
+    /*
+     * 第二个页面的精选专辑网络解析
+     *http://api.ergedd.com/api/v1/audio_playlists/excellent
+     * */
+    @Headers("Cache-Control: public, max-age=28800")
+    @GET
+    Observable<HandPicAlbumBean>getAlbum(@Url String url, @Query("channel") String channel);
 
 
-
+  
     
 
     //http://api.t.ergedd.com/api/v1/album_categories/1/albums?channel=new&offset=0&limit=20&sensitive=8
