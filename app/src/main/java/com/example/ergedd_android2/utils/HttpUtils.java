@@ -15,4 +15,16 @@ public class HttpUtils {
         }
         return false;
     }
+
+    //判断是否有wifi
+    public static boolean isWifiConnected(Context context) {
+        if (context != null) {
+            ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo wifiworkInfo = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+            if (wifiworkInfo != null) {
+                return wifiworkInfo.isAvailable();
+            }
+        }
+        return false;
+    }
 }
