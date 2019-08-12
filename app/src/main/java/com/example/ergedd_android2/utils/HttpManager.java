@@ -52,6 +52,19 @@ public class HttpManager {
         return getRetrofit().create(tClass);
     }
 
+    private Retrofit getRetrofit2() {
+        return new Retrofit.Builder()
+                .baseUrl(Globle.Particulars_URL)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(getOkHttpClicent())
+                .build();
+    }
+
+    public <T> T getApiService2(Class<T> tClass) {
+        return getRetrofit2().create(tClass);
+    }
+
     private OkHttpClient getOkHttpClicent() {
 
         //日志过滤器
