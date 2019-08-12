@@ -36,7 +36,6 @@ public class BabyLookInnerFragment extends BaseFragment<BabyLookInnerFragment, B
         cid=id;
     }
 
-
     @Override
     public void onInnerSuccess(BabyLookInnerBean babyLookInnerBean) {
         List<BabyLookInnerBean.DataBean> data = babyLookInnerBean.getData();

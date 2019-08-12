@@ -7,9 +7,9 @@ import com.example.ergedd_android2.bean.BabyLookSiftGridBean;
 import com.example.ergedd_android2.bean.BabyLookSiftItemBean;
 import com.example.ergedd_android2.bean.BabyLookSiftThreeImgBean;
 import com.example.ergedd_android2.bean.BabyLookTabBean;
+import com.example.ergedd_android2.bean.BabylookParBean;
 import com.example.ergedd_android2.bean.HandPicAlbumBean;
 import com.example.ergedd_android2.bean.HandPicBottomListBean;
-import com.example.ergedd_android2.bean.BabylookParBean;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
@@ -88,5 +88,11 @@ Observable<BabyLookSiftThreeImgBean> getLookSift(@Url String url, @Query("channe
     //http://api.t.ergedd.com/api/v1/album_categories/1/albums?channel=new&offset=0&limit=20&sensitive=8
     //宝宝看tab
     @GET
-    Observable<BabyLookInnerBean> getLookInner(@Url String url,@Query("channel") String channel,@Query("offset") int offset,@Query("limit") int limit,@Query("sensitive") int sensitive);
+    Observable<BabyLookInnerBean> getLookInner(@Url String url,@Query("channel") String channel,@Query("offset") int offset,@Query("limit") int limit,@Query("sensitive") int sensitive);//http://api.t.ergedd.com/api/v1/album_categories/1/albums?channel=new&offset=0&limit=20&sensitive=8
+    //http://api.t.ergedd.com/api/v1/albums/514/videos?channel=new&offset=0&limit=20&sensitive=8
+    //宝宝看tab
+    @GET("albums/{id}/videos?channel=new&offset=0&limit=20&sensitive=8")
+    Observable<BabylookParBean> getBabylookParData(@Path("id") int id);
+
+
 }

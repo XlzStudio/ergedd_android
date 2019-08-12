@@ -16,7 +16,7 @@ public class BabylookParModel implements BabylookParContract.BabylookParModel {
     @Override
     public void getData(int id,final CallBack callBack) {
         HttpManager.getInstance().getApiService2(ApiServer.class)
-                .getParticularsData(id)
+                .getBabylookParData(id)
                 .compose(RxUtils.<BabylookParBean>rxScheduleThread())
                 .subscribe(new BaseObsever<BabylookParBean>() {
                     @Override
