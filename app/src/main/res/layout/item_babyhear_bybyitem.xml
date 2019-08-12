@@ -24,6 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/babyitem_title"
         android:layout_toRightOf="@id/babyitem_iv"
+        android:maxLines="1"
         android:text="动动手指学英文" />
 
         <ImageView
@@ -38,7 +39,7 @@
     <TextView
         android:layout_toRightOf="@id/babyitem_music"
         android:layout_alignTop="@id/babyitem_music"
-        android:id="@+id/count"
+        android:id="@+id/babyitem_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="31首" />

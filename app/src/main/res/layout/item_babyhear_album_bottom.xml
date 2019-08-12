@@ -1,81 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="10dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="10dp">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical">
+
         <ImageView
+            android:id="@+id/img_babyhear_album_bottom"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:id="@+id/img_babyhear_album_bottom"/>
+            android:layout_centerVertical="true" />
+
         <TextView
-            android:layout_toRightOf="@id/img_babyhear_album_bottom"
+            android:id="@+id/title_babyhear_album_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/img_babyhear_album_bottom"
             android:text="1111111"
-            android:textColor="@color/cardview_dark_background"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/title_babyhear_album_bottom"/>
+            android:textColor="@color/cardview_dark_background" />
+
         <TextView
+            android:id="@+id/more_babyhear_album_bottom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/more_babyhear_album_bottom"
-            android:textColor="@color/colorPrimary"
+            android:layout_centerVertical="true"
             android:layout_toLeftOf="@id/more1_babyhear_album_bottom"
-            android:text="更多" />
+            android:text="更多"
+            android:textColor="@color/green" />
+
         <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/icon_enter_green"
             android:id="@+id/more1_babyhear_album_bottom"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
             android:layout_alignParentRight="true"
-            />
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_enter_green" />
     </RelativeLayout>
 
     <LinearLayout
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:layout_gravity="center_horizontal">
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal">
+
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp">
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:id="@+id/img1_babyhear_album_bottom"/>
 
             <ImageView
+                android:id="@+id/img1_babyhear_album_bottom"
+                android:layout_width="100dp"
+                android:layout_height="100dp" />
+
+            <ImageView
+                android:id="@+id/music1_babyhear_album_bottom"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_alignBottom="@id/img1_babyhear_album_bottom"
                 android:background="@color/color_bottom"
-                android:src="@drawable/icon_music_white"
-                android:id="@+id/music1_babyhear_album_bottom"/>
+                android:src="@drawable/icon_music_white" />
+
             <TextView
+                android:id="@+id/count1_babyhear_album_bottom"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
-                android:text="21"
-                android:background="@color/color_bottom"
-                android:layout_toRightOf="@id/music1_babyhear_album_bottom"
-                android:textColor="@color/cardview_light_background"
                 android:layout_alignBottom="@id/img1_babyhear_album_bottom"
-                android:id="@+id/count1_babyhear_album_bottom"/>
+                android:layout_toRightOf="@id/music1_babyhear_album_bottom"
+                android:background="@color/color_bottom"
+                android:text="21"
+                android:textColor="@color/cardview_light_background" />
+
             <TextView
+                android:id="@+id/name1_babyhear_album_bottom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="手指"
-                android:textSize="12dp"
-                android:layout_marginTop="5dp"
-                android:textColor="@color/cardview_dark_background"
                 android:layout_below="@id/img1_babyhear_album_bottom"
-                android:id="@+id/name1_babyhear_album_bottom"/>
+                android:layout_marginTop="5dp"
+                android:text="手指"
+                android:textColor="@color/cardview_dark_background"
+                android:textSize="12dp" />
         </RelativeLayout>
 
 
@@ -83,74 +95,80 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="5dp">
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:id="@+id/img2_babyhear_album_bottom"/>
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="20dp">
 
             <ImageView
+                android:id="@+id/img2_babyhear_album_bottom"
+                android:layout_width="100dp"
+                android:layout_height="100dp" />
+
+            <ImageView
+                android:id="@+id/music2_babyhear_album_bottom"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_alignBottom="@id/img2_babyhear_album_bottom"
                 android:background="@color/color_bottom"
-                android:src="@drawable/icon_music_white"
-                android:id="@+id/music2_babyhear_album_bottom"/>
+                android:src="@drawable/icon_music_white" />
+
             <TextView
+                android:id="@+id/count2_babyhear_album_bottom"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
-                android:text="21"
-                android:background="@color/color_bottom"
-                android:layout_toRightOf="@id/music2_babyhear_album_bottom"
-                android:textColor="@color/cardview_light_background"
                 android:layout_alignBottom="@id/img2_babyhear_album_bottom"
-                android:id="@+id/count2_babyhear_album_bottom"/>
+                android:layout_toRightOf="@id/music2_babyhear_album_bottom"
+                android:background="@color/color_bottom"
+                android:text="21"
+                android:textColor="@color/cardview_light_background" />
+
             <TextView
+                android:id="@+id/name2_babyhear_album_bottom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="手指"
-                android:textSize="12dp"
-                android:layout_marginTop="5dp"
-                android:textColor="@color/cardview_dark_background"
                 android:layout_below="@id/img2_babyhear_album_bottom"
-                android:id="@+id/name2_babyhear_album_bottom"/>
+                android:layout_marginTop="5dp"
+                android:text="手指"
+                android:textColor="@color/cardview_dark_background"
+                android:textSize="12dp" />
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp">
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:id="@+id/img3_babyhear_album_bottom"/>
 
             <ImageView
+                android:id="@+id/img3_babyhear_album_bottom"
+                android:layout_width="100dp"
+                android:layout_height="100dp" />
+
+            <ImageView
+                android:id="@+id/music3_babyhear_album_bottom"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_alignBottom="@id/img3_babyhear_album_bottom"
                 android:background="@color/color_bottom"
-                android:src="@drawable/icon_music_white"
-                android:id="@+id/music3_babyhear_album_bottom"/>
+                android:src="@drawable/icon_music_white" />
+
             <TextView
+                android:id="@+id/count3_babyhear_album_bottom"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
-                android:text="21"
-                android:background="@color/color_bottom"
-                android:layout_toRightOf="@id/music3_babyhear_album_bottom"
-                android:textColor="@color/cardview_light_background"
                 android:layout_alignBottom="@id/img3_babyhear_album_bottom"
-                android:id="@+id/count3_babyhear_album_bottom"/>
+                android:layout_toRightOf="@id/music3_babyhear_album_bottom"
+                android:background="@color/color_bottom"
+                android:text="21"
+                android:textColor="@color/cardview_light_background" />
+
             <TextView
+                android:id="@+id/name3_babyhear_album_bottom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="手指"
-                android:textSize="12dp"
-                android:layout_marginTop="5dp"
-                android:textColor="@color/cardview_dark_background"
                 android:layout_below="@id/img3_babyhear_album_bottom"
-                android:id="@+id/name3_babyhear_album_bottom"/>
+                android:layout_marginTop="5dp"
+                android:text="手指"
+                android:textColor="@color/cardview_dark_background"
+                android:textSize="12dp" />
         </RelativeLayout>
 
 
