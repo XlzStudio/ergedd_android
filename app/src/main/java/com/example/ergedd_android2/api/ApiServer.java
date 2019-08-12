@@ -30,6 +30,18 @@ public interface ApiServer {
     @GET
     Observable<BabyLookTabBean> getlookTab(@Url String url, @Query("channel") String channel, @Query("offset") int offset, @Query("limit") int limit, @Query("addition_album_count") int addition_album_count);
 
+
+
+
+/*
+* 第二个页面的精选底部列表网络解析
+*http://api.ergedd.com/api/v1/audio_categories?channel=original
+* */
+@Headers("Cache-Control: public, max-age=28800")
+@GET
+Observable<HandPicBottomListBean>getBottomData(@Url String url, @Query("channel") String channel);
+
+
     /*
      * 宝宝听页面精选下半部分及tab栏接口
      *http://api.ergedd.com/api/v1/audio_categories?channel=original
@@ -60,10 +72,6 @@ Observable<BabyLookSiftThreeImgBean> getLookSift(@Url String url, @Query("channe
     @GET
     Observable<BabyLookSiftItemBean> getLookItemUp(@Url String url, @Query("type") int type, @Query("channel") String channel, @Query("offset") int offset, @Query("limit") int limit, @Query("sensitive") int sensitive);
 
-    //http://api.t.ergedd.com/api/v1/album_categories/1/albums?channel=new&offset=0&limit=20&sensitive=8
-    //宝宝看tab
-    @GET
-    Observable<BabyLookInnerBean> getLookInner(@Url String url,@Query("channel") String channel,@Query("offset") int offset,@Query("limit") int limit,@Query("sensitive") int sensitive);
 
     /*
      * 第二个页面的精选专辑网络解析
@@ -73,19 +81,12 @@ Observable<BabyLookSiftThreeImgBean> getLookSift(@Url String url, @Query("channe
     @GET
     Observable<HandPicAlbumBean>getAlbum(@Url String url, @Query("channel") String channel);
 
-    /*
-     * 第二个页面的精选底部列表网络解析
-     *http://api.ergedd.com/api/v1/audio_categories?channel=original
-     * */
-    @Headers("Cache-Control: public, max-age=28800")
-    @GET
-    Observable<HandPicBottomListBean>getBottomData(@Url String url, @Query("channel") String channel);
 
-    public String parurl="http://api.t.ergedd.com/api/v1/";
-    /*
-     * 第一个页面的上面三个图片点击跳转详情接口
-     *http://api.t.ergedd.com/api/v1/albums/33/videos?channel=new&offset=0&limit=20&sensitive=8
-     * */
-    @GET("albums/{id}/videos?channel=new&offset=0&limit=20&sensitive=8")
-    Observable<BabylookParBean> getParticularsData(@Path("id") int id);
+
+    
+
+    //http://api.t.ergedd.com/api/v1/album_categories/1/albums?channel=new&offset=0&limit=20&sensitive=8
+    //宝宝看tab
+    @GET
+    Observable<BabyLookInnerBean> getLookInner(@Url String url,@Query("channel") String channel,@Query("offset") int offset,@Query("limit") int limit,@Query("sensitive") int sensitive);
 }
