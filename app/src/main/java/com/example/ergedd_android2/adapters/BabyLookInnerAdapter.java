@@ -36,13 +36,21 @@ public class BabyLookInnerAdapter extends RecyclerView.Adapter<BabyLookInnerAdap
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
         viewHolder.name.setText(data.get(i).getName());
         int video_count = data.get(i).getVideo_count();
         viewHolder.quantity.setText("共"+video_count+"集");
         viewHolder.title.setText(data.get(i).getDescription());
 
         Glide.with(fragment.getContext()).load(data.get(i).getImage_url()).into(viewHolder.img);
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (onClickListener!=null){
+                    onClickListener.OnItemClick(i,data.get(i));
+                }
+            }
+        });
     }
 
     @Override
@@ -60,5 +68,14 @@ public class BabyLookInnerAdapter extends RecyclerView.Adapter<BabyLookInnerAdap
             quantity=itemView.findViewById(R.id.quantity);
             img=itemView.findViewById(R.id.img);
         }
+    }
+    private OnClickListener onClickListener;
+
+    public void setOnClickListener(OnClickListener onClickListener) {
+        this.onClickListener = onClickListener;
+    }
+
+    public interface OnClickListener{
+        void OnItemClick(int p,BabyLookInnerBean.DataBean dataBean);
     }
 }

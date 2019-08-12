@@ -1,41 +1,38 @@
 package com.example.ergedd_android2.fragments;
 
 
-import android.os.Bundle;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.ergedd_android2.Contract.BabyLookSiftContract;
 import com.example.ergedd_android2.R;
+import com.example.ergedd_android2.activitys.ParticularsActivity;
 import com.example.ergedd_android2.adapters.BabyLookSiftGridAdapter;
 import com.example.ergedd_android2.adapters.BabyLookSiftItemAdapter;
 import com.example.ergedd_android2.base.BaseFragment;
 import com.example.ergedd_android2.bean.BabyLookSiftGridBean;
 import com.example.ergedd_android2.bean.BabyLookSiftItemBean;
 import com.example.ergedd_android2.bean.BabyLookSiftThreeImgBean;
-import com.example.ergedd_android2.bean.BabyLookTabBean;
 import com.example.ergedd_android2.presenter.BabyLookSiftPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class BabyLookSiftFragment extends BaseFragment<BabyLookSiftFragment, BabyLookSiftPresenter> implements BabyLookSiftContract.BabyLookView {
+public class BabyLookSiftFragment extends BaseFragment<BabyLookSiftFragment, BabyLookSiftPresenter> implements BabyLookSiftContract.BabyLookView,BabyLookSiftGridAdapter.OnClickListener {
 
 
     @BindView(R.id.scrofa)
@@ -45,7 +42,7 @@ public class BabyLookSiftFragment extends BaseFragment<BabyLookSiftFragment, Bab
     @BindView(R.id.dog)
     ImageView dog;
     @BindView(R.id.gridview)
-    GridView gridview;
+    RecyclerView gridview;
     @BindView(R.id.recyclerview)
     RecyclerView recyclerview;
     Unbinder unbinder;
@@ -53,6 +50,7 @@ public class BabyLookSiftFragment extends BaseFragment<BabyLookSiftFragment, Bab
     private List<List<BabyLookSiftThreeImgBean.DataBean>> imgList=new ArrayList<>();
     private BabyLookSiftGridAdapter babyLookSiftGridAdapter;
     private BabyLookSiftItemAdapter babyLookSiftItemAdapter;
+    private List<BabyLookSiftGridBean.DataBean> data;
 
     @Override
     protected BabyLookSiftPresenter createPresenter() {
@@ -75,16 +73,18 @@ public class BabyLookSiftFragment extends BaseFragment<BabyLookSiftFragment, Bab
 
         mPresenter.BabyLookSiftItemHttp(0);
 
-
         mPresenter.BabyLookSiftItemHttp(20);
-
-        babyLookSiftGridAdapter = new BabyLookSiftGridAdapter(this);
-        gridview.setAdapter(babyLookSiftGridAdapter);
 
         recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerview.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayout.VERTICAL));
         babyLookSiftItemAdapter = new BabyLookSiftItemAdapter(this);
         recyclerview.setAdapter(babyLookSiftItemAdapter);
+
+        gridview.setLayoutManager(new GridLayoutManager(getActivity(),4));
+        data = new ArrayList<>();
+        babyLookSiftGridAdapter = new BabyLookSiftGridAdapter(data,getActivity());
+        gridview.setAdapter(babyLookSiftGridAdapter);
+        babyLookSiftGridAdapter.setOnClickListener(this);
 
     }
 
@@ -93,10 +93,19 @@ public class BabyLookSiftFragment extends BaseFragment<BabyLookSiftFragment, Bab
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.scrofa:
+                Intent intent = new Intent(getActivity(),ParticularsActivity.class);
+                intent.putExtra("id",33);
+                startActivity(intent);
                 break;
             case R.id.chook:
+                Intent intent2 = new Intent(getActivity(),ParticularsActivity.class);
+                intent2.putExtra("id",532);
+                startActivity(intent2);
                 break;
             case R.id.dog:
+                Intent intent3 = new Intent(getActivity(),ParticularsActivity.class);
+                intent3.putExtra("id",175);
+                startActivity(intent3);
                 break;
         }
     }
@@ -110,8 +119,8 @@ public class BabyLookSiftFragment extends BaseFragment<BabyLookSiftFragment, Bab
 
     @Override
     public void onGridSuccess(BabyLookSiftGridBean babyLookGridBean) {
-        List<BabyLookSiftGridBean.DataBean> data = babyLookGridBean.getData();
-        babyLookSiftGridAdapter.initData(data);
+        data.addAll(babyLookGridBean.getData());
+        babyLookSiftGridAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -123,5 +132,12 @@ public class BabyLookSiftFragment extends BaseFragment<BabyLookSiftFragment, Bab
     @Override
     public void onFail(String msg) {
 
+    }
+
+    @Override
+    public void OnItemClick(int p, BabyLookSiftGridBean.DataBean dataBean) {
+        Intent intent4 = new Intent(getActivity(),ParticularsActivity.class);
+        intent4.putExtra("id",dataBean.getId());
+        startActivity(intent4);
     }
 }

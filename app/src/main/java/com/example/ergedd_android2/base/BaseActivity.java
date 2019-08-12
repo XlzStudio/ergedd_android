@@ -22,16 +22,6 @@ public abstract class BaseActivity <V, P extends BasePresenter<V>> extends Simpl
         }
     }
 
-    //显示进度
-    public void showProgressBar() {
-
-    }
-
-    //隐藏进度
-    public void hiderogressBar() {
-
-    }
-
     protected abstract P createPresenter();
 
     @Override
