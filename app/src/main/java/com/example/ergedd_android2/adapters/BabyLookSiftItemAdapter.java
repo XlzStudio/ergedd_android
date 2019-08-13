@@ -36,9 +36,10 @@ public class BabyLookSiftItemAdapter extends RecyclerView.Adapter<BabyLookSiftIt
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHoder viewHoder, int i) {
+    public void onBindViewHolder(@NonNull ViewHoder viewHoder, final int i) {
         viewHoder.title.setText(data.get(i).getItem().getName());
         Glide.with(fragment.getContext()).load(data.get(i).getItem().getImage()).into(viewHoder.img);
+
     }
 
     @Override
@@ -57,4 +58,5 @@ public class BabyLookSiftItemAdapter extends RecyclerView.Adapter<BabyLookSiftIt
             download=itemView.findViewById(R.id.disableHome);
         }
     }
+
 }

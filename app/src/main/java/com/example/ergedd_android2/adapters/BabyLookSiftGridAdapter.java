@@ -1,11 +1,10 @@
 package com.example.ergedd_android2.adapters;
 
 import android.content.Context;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,60 +12,64 @@ import com.bumptech.glide.Glide;
 import com.example.ergedd_android2.R;
 import com.example.ergedd_android2.bean.BabyLookSiftGridBean;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class BabyLookSiftGridAdapter extends BaseAdapter {
-    private List<BabyLookSiftGridBean.DataBean> data = new ArrayList<>();
-    private Fragment fragment;
+public class BabyLookSiftGridAdapter extends RecyclerView.Adapter<BabyLookSiftGridAdapter.ViewHolder> {
+    private List<BabyLookSiftGridBean.DataBean> data;
+    private Context context;
 
-    public BabyLookSiftGridAdapter(Fragment fragment) {
-        this.fragment = fragment;
+    public BabyLookSiftGridAdapter(List<BabyLookSiftGridBean.DataBean> data, Context context) {
+        this.data = data;
+        this.context = context;
     }
 
-    public void initData(List<BabyLookSiftGridBean.DataBean> data){
-        this.data.clear();
-        this.data.addAll(data);
-        notifyDataSetChanged();
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        View inflate = View.inflate(context, R.layout.item_baby_look_sift_grid, null);
+        return new ViewHolder(inflate);
     }
 
     @Override
-    public int getCount() {
-       if (data.size()>0){
-           return 8;
-       }
-       return 0;
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
+        Glide.with(context).load(data.get(i).getIcon_url()).into(viewHolder.img);
+        viewHolder.title.setText(data.get(i).getName());
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (onClickListener!=null){
+                    onClickListener.OnItemClick(i,data.get(i));
+                }
+            }
+        });
     }
 
     @Override
-    public Object getItem(int position) {
-        return data.get(position);
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder = null;
-        if (convertView == null) {
-            convertView = LayoutInflater.from(fragment.getContext()).inflate(R.layout.item_baby_look_sift_grid, null);
-            viewHolder = new ViewHolder();
-            viewHolder.img = convertView.findViewById(R.id.img);
-            viewHolder.title = convertView.findViewById(R.id.title);
-            convertView.setTag(viewHolder);
-        } else {
-            viewHolder = (ViewHolder) convertView.getTag();
+    public int getItemCount() {
+        if (data.size()>0){
+            return 8;
         }
-        viewHolder.title.setText(data.get(position).getName());
-        Glide.with(fragment.getContext()).load(data.get(position).getIcon_url()).into(viewHolder.img);
-        return convertView;
+        return 0;
     }
 
-    class ViewHolder {
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView img;
         TextView title;
+
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            img = itemView.findViewById(R.id.img);
+            title = itemView.findViewById(R.id.title);
+        }
+    }
+    private OnClickListener onClickListener;
+
+    public void setOnClickListener(OnClickListener onClickListener) {
+        this.onClickListener = onClickListener;
+    }
+
+    public interface OnClickListener{
+        void OnItemClick(int p,BabyLookSiftGridBean.DataBean dataBean);
     }
 }

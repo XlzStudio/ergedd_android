@@ -6,6 +6,7 @@ public class Globle {
 
     public static final String BASE_URL = "http://api.ergedd.com/api/v1/";
     public static final String BASE_DETAIL_URL = "http://api.ergedd.com/";
+    public static final String Particulars_URL = "http://api.t.ergedd.com/api/v1/";
 
 
 }
