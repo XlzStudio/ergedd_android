@@ -31,15 +31,13 @@ public interface ApiServer {
     Observable<BabyLookTabBean> getlookTab(@Url String url, @Query("channel") String channel, @Query("offset") int offset, @Query("limit") int limit, @Query("addition_album_count") int addition_album_count);
 
 
-
-
-/*
-* 第二个页面的精选底部列表网络解析
-*http://api.ergedd.com/api/v1/audio_categories?channel=original
-* */
-@Headers("Cache-Control: public, max-age=28800")
-@GET
-Observable<HandPicBottomListBean>getBottomData(@Url String url, @Query("channel") String channel);
+    /*
+     * 第二个页面的精选底部列表网络解析
+     *http://api.ergedd.com/api/v1/audio_categories?channel=original
+     * */
+    @Headers("Cache-Control: public, max-age=28800")
+    @GET
+    Observable<HandPicBottomListBean> getBottomData(@Url String url, @Query("channel") String channel);
 
 
     /*
@@ -56,14 +54,14 @@ Observable<HandPicBottomListBean>getBottomData(@Url String url, @Query("channel"
     @GET("audio_categories/{id}/playlists?channel=new&offset=0&limit=20")
     Observable<BabyHearItemBean> getBabyHearItem(@Path("id") int id);
 
-//http://api.t.ergedd.com/api/v1/albums/33/videos?channel=new&offset=0&limit=20&sensitive=8
-//宝宝看精选3个图片网路请求
-@GET
-Observable<BabyLookSiftThreeImgBean> getLookSift(@Url String url, @Query("channel") String channel, @Query("offset") int offset, @Query("limit") int limit, @Query("sensitive") int sensitive);
+    //http://api.t.ergedd.com/api/v1/albums/33/videos?channel=new&offset=0&limit=20&sensitive=8
+    //宝宝看精选3个图片网路请求
+    @GET
+    Observable<BabyLookSiftThreeImgBean> getLookSift(@Url String url, @Query("channel") String channel, @Query("offset") int offset, @Query("limit") int limit, @Query("sensitive") int sensitive);
 
 
-//http://api.t.ergedd.com/api/v1/albums/home_recommended?channel=new&offset=0&limit=16
-// 宝宝看详情GridView
+    //http://api.t.ergedd.com/api/v1/albums/home_recommended?channel=new&offset=0&limit=16
+    // 宝宝看详情GridView
     @GET
     Observable<BabyLookSiftGridBean> getLookGrid(@Url String url, @Query("channel") String channel, @Query("offset") int offset, @Query("limit") int limit);
 
@@ -79,16 +77,14 @@ Observable<BabyLookSiftThreeImgBean> getLookSift(@Url String url, @Query("channe
      * */
     @Headers("Cache-Control: public, max-age=28800")
     @GET
-    Observable<HandPicAlbumBean>getAlbum(@Url String url, @Query("channel") String channel);
+    Observable<HandPicAlbumBean> getAlbum(@Url String url, @Query("channel") String channel);
 
-
-
-    
 
     //http://api.t.ergedd.com/api/v1/album_categories/1/albums?channel=new&offset=0&limit=20&sensitive=8
     //宝宝看tab
     @GET
-    Observable<BabyLookInnerBean> getLookInner(@Url String url,@Query("channel") String channel,@Query("offset") int offset,@Query("limit") int limit,@Query("sensitive") int sensitive);//http://api.t.ergedd.com/api/v1/album_categories/1/albums?channel=new&offset=0&limit=20&sensitive=8
+    Observable<BabyLookInnerBean> getLookInner(@Url String url, @Query("channel") String channel, @Query("offset") int offset, @Query("limit") int limit, @Query("sensitive") int sensitive);//http://api.t.ergedd.com/api/v1/album_categories/1/albums?channel=new&offset=0&limit=20&sensitive=8
+
     //http://api.t.ergedd.com/api/v1/albums/514/videos?channel=new&offset=0&limit=20&sensitive=8
     //宝宝看tab
     @GET("albums/{id}/videos?channel=new&offset=0&limit=20&sensitive=8")

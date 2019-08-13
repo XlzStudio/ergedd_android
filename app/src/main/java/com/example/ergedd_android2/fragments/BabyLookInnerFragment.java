@@ -76,6 +76,7 @@ public class BabyLookInnerFragment extends BaseFragment<BabyLookInnerFragment, B
     public void OnItemClick(int p, BabyLookInnerBean.DataBean dataBean) {
         Intent intent = new Intent(getActivity(),ParticularsActivity.class);
         intent.putExtra("id",dataBean.getId());
+        intent.putExtra("title",dataBean.getName());
         startActivity(intent);
     }
 }
