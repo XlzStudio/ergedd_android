@@ -1,6 +1,8 @@
 package com.example.ergedd_android2.activitys;
 
 import android.content.Intent;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -76,10 +78,14 @@ public class HandPicDetailActivity extends BaseActivity<HandPicDetailActivity, H
         setSupportActionBar(toolbarBabyhearDetail);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        Drawable upArrow = getResources().getDrawable(R.drawable.abc_ic_ab_back_material);
+        upArrow.setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_ATOP);
+        getSupportActionBar().setHomeAsUpIndicator(upArrow);
+
         toolbarBabyhearDetail.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fileList();
+                finish();
             }
         });
 

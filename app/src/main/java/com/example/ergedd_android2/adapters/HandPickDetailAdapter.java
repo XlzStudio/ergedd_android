@@ -1,8 +1,10 @@
 package com.example.ergedd_android2.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,7 @@ import com.bumptech.glide.Glide;
 import com.example.ergedd_android2.R;
 import com.example.ergedd_android2.bean.BabyLookInnerBean;
 import com.example.ergedd_android2.bean.HandPicDetailBean;
+import com.example.ergedd_android2.bean.PlayMusicBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,10 +40,33 @@ public class HandPickDetailAdapter extends RecyclerView.Adapter<HandPickDetailAd
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        HandPicDetailBean.RecordBean.AudiosBean audiosBean = audios.get(i);
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
+        final HandPicDetailBean.RecordBean.AudiosBean audiosBean = audios.get(i);
         viewHolder.lenth.setText(audiosBean.getId()+"");
         viewHolder.name.setText(audiosBean.getName());
+
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HandPicDetailBean.RecordBean.AudiosBean audiosBean1 = audios.get(i);
+                Intent intent = new Intent();
+                intent.setAction("play");
+
+                ArrayList<PlayMusicBean> playMusicBeans = new ArrayList<>();
+                for (int j = 0; j <audios.size(); j++) {
+
+                    PlayMusicBean playMusicBean = new PlayMusicBean();
+                    playMusicBean.setName(audios.get(j).getName());
+                    playMusicBean.setResource(audios.get(j).getResource());
+                    playMusicBeans.add(playMusicBean);
+
+                }
+
+                intent.putParcelableArrayListExtra("play",playMusicBeans);
+
+                LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
+            }
+        });
     }
 
     @Override

@@ -6,8 +6,8 @@
     android:layout_marginTop="10dp"
     android:orientation="vertical">
     <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
         android:id="@+id/img_babyhear_album"/>
     <TextView
         android:layout_width="wrap_content"

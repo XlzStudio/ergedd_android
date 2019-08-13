@@ -118,11 +118,11 @@ public class HandpickFragment extends BaseFragment<HandpickFragment, HandPickPre
 
                 break;
             case R.id.baby_hear_peiqi:
-                getTopData(194);
+                getTopData(261);
                 startIntent();
                 break;
             case R.id.baby_hear_song:
-                getTopData(261);
+                getTopData(194);
                 startIntent();
                 break;
         }

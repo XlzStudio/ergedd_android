@@ -3,6 +3,7 @@ package com.example.ergedd_android2.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,7 +45,7 @@ public class HandPicRecyclerAdapter extends RecyclerView.Adapter<HandPicRecycler
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
-        HandPicBottomListBean.DataBean dataBean = data.get(i);
+        final HandPicBottomListBean.DataBean dataBean = data.get(i);
         viewHolder.title.setText(dataBean.getName());
         Glide.with(context).load(dataBean.getImage()).into(viewHolder.img0);
 
@@ -67,7 +68,16 @@ public class HandPicRecyclerAdapter extends RecyclerView.Adapter<HandPicRecycler
             Glide.with(context).load(playlistsBean2.getSquare_image_url()).apply(requestOptions).into(viewHolder.img3);
             imgClick(i,viewHolder.img1,viewHolder.img2,viewHolder.img3);
 
-
+            viewHolder.more.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int id = dataBean.getId();
+                    Intent intent = new Intent();
+                    intent.setAction("id");
+                    intent.putExtra("id",i+1);
+                    LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
+                }
+            });
     }
 
     private void imgClick(@NonNull final int i,ImageView img1,ImageView img2,ImageView img3) {
@@ -135,6 +145,7 @@ public class HandPicRecyclerAdapter extends RecyclerView.Adapter<HandPicRecycler
         TextView count1;
         TextView count2;
         TextView count3;
+        TextView more;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             img0=itemView.findViewById(R.id.img_babyhear_album_bottom);
@@ -148,6 +159,7 @@ public class HandPicRecyclerAdapter extends RecyclerView.Adapter<HandPicRecycler
             count1=itemView.findViewById(R.id.count1_babyhear_album_bottom);
             count2=itemView.findViewById(R.id.count2_babyhear_album_bottom);
             count3=itemView.findViewById(R.id.count3_babyhear_album_bottom);
+            more=itemView.findViewById(R.id.more_babyhear_album_bottom);
         }
     }
 }

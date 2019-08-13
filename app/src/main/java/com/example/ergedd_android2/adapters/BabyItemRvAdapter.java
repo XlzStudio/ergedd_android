@@ -1,6 +1,7 @@
 package com.example.ergedd_android2.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -10,7 +11,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.ergedd_android2.R;
+import com.example.ergedd_android2.activitys.HandPicDetailActivity;
 import com.example.ergedd_android2.bean.BabyHearItemBean;
+import com.example.ergedd_android2.bean.HandPicAlbumBean;
 
 import java.util.ArrayList;
 
@@ -31,11 +34,28 @@ public class BabyItemRvAdapter extends RecyclerView.Adapter<BabyItemRvAdapter.Vi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
         Glide.with(context).load(list.get(i).getSquare_image_url()).into(viewHolder.babyitem_iv);
         viewHolder.babyitem_title.setText(list.get(i).getName());
         viewHolder.babyitem_text.setText(list.get(i).getDescription());
         viewHolder.babyitem_count.setText(list.get(i).getCount()+"首");
+
+
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BabyHearItemBean.DataBean dataBean = list.get(i);
+                Intent intent = new Intent(context, HandPicDetailActivity.class);
+
+                intent.putExtra("id",dataBean.getId());
+                intent.putExtra("name",dataBean.getName());
+                intent.putExtra("count",dataBean.getCount()+"");
+                intent.putExtra("content",dataBean.getDescription());
+                intent.putExtra("img",dataBean.getSquare_image_url());
+                intent.putExtra("bg", dataBean.getImage());
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

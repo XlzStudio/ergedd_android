@@ -59,26 +59,31 @@
 
             <ImageView
                 android:id="@+id/img1_babyhear_album_bottom"
-                android:layout_width="100dp"
-                android:layout_height="100dp" />
+                android:layout_width="120dp"
+                android:layout_height="120dp" />
 
-            <ImageView
-                android:id="@+id/music1_babyhear_album_bottom"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+            <LinearLayout
+                android:layout_width="35dp"
+                android:layout_height="15dp"
+                android:gravity="center"
+                android:layout_marginBottom="7dp"
                 android:layout_alignBottom="@id/img1_babyhear_album_bottom"
-                android:background="@color/color_bottom"
-                android:src="@drawable/icon_music_white" />
+                android:background="@color/color_bottom">
 
-            <TextView
-                android:id="@+id/count1_babyhear_album_bottom"
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:layout_alignBottom="@id/img1_babyhear_album_bottom"
-                android:layout_toRightOf="@id/music1_babyhear_album_bottom"
-                android:background="@color/color_bottom"
-                android:text="21"
-                android:textColor="@color/cardview_light_background" />
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:src="@drawable/icon_music_white"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12dp"
+                    android:text="21"
+                    android:id="@+id/count1_babyhear_album_bottom"
+                    android:layout_marginLeft="3dp"
+                    android:textColor="@color/white"/>
+            </LinearLayout>
+
 
             <TextView
                 android:id="@+id/name1_babyhear_album_bottom"
@@ -96,32 +101,36 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
-            android:layout_marginRight="20dp">
+            android:layout_marginRight="10dp">
 
             <ImageView
                 android:id="@+id/img2_babyhear_album_bottom"
-                android:layout_width="100dp"
-                android:layout_height="100dp" />
+                android:layout_width="120dp"
+                android:layout_height="120dp" />
 
-            <ImageView
-                android:id="@+id/music2_babyhear_album_bottom"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+            <LinearLayout
+                android:layout_width="35dp"
+                android:layout_height="15dp"
+                android:gravity="center"
+                android:layout_marginBottom="7dp"
                 android:layout_alignBottom="@id/img2_babyhear_album_bottom"
-                android:background="@color/color_bottom"
-                android:src="@drawable/icon_music_white" />
+                android:background="@color/color_bottom">
 
-            <TextView
-                android:id="@+id/count2_babyhear_album_bottom"
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:layout_alignBottom="@id/img2_babyhear_album_bottom"
-                android:layout_toRightOf="@id/music2_babyhear_album_bottom"
-                android:background="@color/color_bottom"
-                android:text="21"
-                android:textColor="@color/cardview_light_background" />
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:src="@drawable/icon_music_white"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12dp"
+                    android:text="21"
+                    android:id="@+id/count2_babyhear_album_bottom"
+                    android:layout_marginLeft="3dp"
+                    android:textColor="@color/white"/>
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/name2_babyhear_album_bottom"
@@ -142,27 +151,30 @@
 
             <ImageView
                 android:id="@+id/img3_babyhear_album_bottom"
-                android:layout_width="100dp"
-                android:layout_height="100dp" />
+                android:layout_width="120dp"
+                android:layout_height="120dp" />
 
-            <ImageView
-                android:id="@+id/music3_babyhear_album_bottom"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+            <LinearLayout
+                android:layout_width="35dp"
+                android:layout_height="15dp"
+                android:gravity="center"
+                android:layout_marginBottom="7dp"
                 android:layout_alignBottom="@id/img3_babyhear_album_bottom"
-                android:background="@color/color_bottom"
-                android:src="@drawable/icon_music_white" />
+                android:background="@color/color_bottom">
 
-            <TextView
-                android:id="@+id/count3_babyhear_album_bottom"
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:layout_alignBottom="@id/img3_babyhear_album_bottom"
-                android:layout_toRightOf="@id/music3_babyhear_album_bottom"
-                android:background="@color/color_bottom"
-                android:text="21"
-                android:textColor="@color/cardview_light_background" />
-
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:src="@drawable/icon_music_white"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12dp"
+                    android:text="21"
+                    android:id="@+id/count3_babyhear_album_bottom"
+                    android:layout_marginLeft="3dp"
+                    android:textColor="@color/white"/>
+            </LinearLayout>
             <TextView
                 android:id="@+id/name3_babyhear_album_bottom"
                 android:layout_width="wrap_content"
