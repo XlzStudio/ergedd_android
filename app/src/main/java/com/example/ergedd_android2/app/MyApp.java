@@ -1,6 +1,7 @@
 package com.example.ergedd_android2.app;
 
 import android.app.Application;
+import android.content.Intent;
 
 public class MyApp extends Application {
 
@@ -10,6 +11,8 @@ public class MyApp extends Application {
     public void onCreate() {
         super.onCreate();
         app = this;
+
+
     }
 
     public static MyApp getInstance() {
