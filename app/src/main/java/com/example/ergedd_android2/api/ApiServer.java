@@ -9,10 +9,15 @@ import com.example.ergedd_android2.bean.BabyLookSiftThreeImgBean;
 import com.example.ergedd_android2.bean.BabyLookTabBean;
 import com.example.ergedd_android2.bean.HandPicAlbumBean;
 import com.example.ergedd_android2.bean.HandPicBottomListBean;
+import com.example.ergedd_android2.bean.HandPicDetailBean;
+import com.example.ergedd_android2.bean.HandPicTopBean;
 
 import io.reactivex.Observable;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 import retrofit2.http.Url;
@@ -30,15 +35,36 @@ public interface ApiServer {
     Observable<BabyLookTabBean> getlookTab(@Url String url, @Query("channel") String channel, @Query("offset") int offset, @Query("limit") int limit, @Query("addition_album_count") int addition_album_count);
 
 
+    /*
+* 第二个页面的精选头部列表网络解析
+*http://api.t.ergedd.com/api/v1/audio_playlists/261
+* */
+@Headers("Cache-Control: public, max-age=28800")
+@GET
+Observable<HandPicTopBean>getTopData(@Url String url);
 
 
-/*
+    /*
 * 第二个页面的精选底部列表网络解析
 *http://api.ergedd.com/api/v1/audio_categories?channel=original
 * */
 @Headers("Cache-Control: public, max-age=28800")
 @GET
 Observable<HandPicBottomListBean>getBottomData(@Url String url, @Query("channel") String channel);
+
+
+
+    /*
+* 第二个页面的精选详情列表
+*http://api.ergedd.com/getAudioByPlaylistId?apid=258&offset=0&limit=20&os=3&code=20618&uuid=88f90448-1cac-4f10-8e80-34cafd428ce8&channel=qihu
+* */
+@Headers("Cache-Control: public, max-age=28800")
+@FormUrlEncoded
+@POST("getAudioByPlaylistId")
+Observable<HandPicDetailBean>getDetailData(@Field("apid") int id,@Field("offset") int offset,
+                                           @Field("limit") int limit,@Field("os") int os,
+                                            @Field("code") String code,@Field("uuid") String uuid,
+                                           @Field("channel") String channel);
 
 
     /*
@@ -81,8 +107,8 @@ Observable<BabyLookSiftThreeImgBean> getLookSift(@Url String url, @Query("channe
     Observable<HandPicAlbumBean>getAlbum(@Url String url, @Query("channel") String channel);
 
 
-  
-    
+
+
 
     //http://api.t.ergedd.com/api/v1/album_categories/1/albums?channel=new&offset=0&limit=20&sensitive=8
     //宝宝看tab

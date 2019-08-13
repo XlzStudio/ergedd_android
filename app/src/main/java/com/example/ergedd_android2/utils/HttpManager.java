@@ -39,6 +39,7 @@ public class HttpManager {
         return httpManager;
     }
 
+    //baseurl
     private Retrofit getRetrofit() {
         return new Retrofit.Builder()
                 .baseUrl(Globle.BASE_URL)
@@ -50,6 +51,21 @@ public class HttpManager {
 
     public <T> T getApiService(Class<T> tClass) {
         return getRetrofit().create(tClass);
+    }
+
+
+    //BASE_DETAIL_URL_URL
+    private Retrofit getDetailRetrofit() {
+        return new Retrofit.Builder()
+                .baseUrl(Globle.BASE_DETAIL_URL)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(getOkHttpClicent())
+                .build();
+    }
+
+    public <T> T getDetailService(Class<T> tClass) {
+        return getDetailRetrofit().create(tClass);
     }
 
     private OkHttpClient getOkHttpClicent() {

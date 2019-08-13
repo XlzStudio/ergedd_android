@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activitys.HandPicDetailActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="240dp">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:id="@+id/bg_baby_detaill"
+            android:background="@drawable/hali"/>
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar_babyhear_detail"
+                android:layout_width="match_parent"
+                app:titleTextColor="@color/white"
+                android:layout_height="60dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:text="标题"
+                    android:id="@+id/title_babyhear_toolbar"/>
+            </android.support.v7.widget.Toolbar>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/shape_babyhear_detail" />
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="10dp">
+
+            <ImageView
+                android:id="@+id/img_babyhear_detail"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:src="@drawable/shape_boder_babyhear_detail" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="2dp"
+                android:layout_alignBottom="@id/img_babyhear_detail"
+                android:layout_alignParentLeft="true"
+                android:background="@color/color_bottom">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/icon_music_white" />
+
+                <TextView
+                    android:id="@+id/count_babyher_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:text="79"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_toRightOf="@id/img_babyhear_detail"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/name_babyhear_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="哈利"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/content_babyhear_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="哈利dfdffdfdfdffdf打发打发发发反对法地方打发打发"
+                    android:textColor="@color/white"
+                    android:textSize="12dp" />
+
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="120dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/img_babyhear_detail"
+                android:background="@drawable/bg_green_babyhear_detail"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15dp">
+
+                <ImageView
+                    android:id="@+id/play_babyhear_detail"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/peppa_btn_play_android" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@id/play_babyhear_detail"
+                    android:text="播放全部"
+                    android:id="@+id/playAll_babyhear_detail"
+                    android:textColor="@color/white" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:id="@+id/recycler_baby_hear_detail"/>
+</LinearLayout>

@@ -1,6 +1,7 @@
 package com.example.ergedd_android2.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -12,6 +13,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.ergedd_android2.R;
+import com.example.ergedd_android2.activitys.HandPicDetailActivity;
 import com.example.ergedd_android2.bean.HandPicAlbumBean;
 
 import java.util.ArrayList;
@@ -39,13 +41,29 @@ public class HandPicAlbumRecyclerAdapter extends RecyclerView.Adapter<HandPicAlb
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
         HandPicAlbumBean.DataBean dataBean = data.get(i);
         viewHolder.name.setText(dataBean.getName());
 
         RoundedCorners roundedCorners = new RoundedCorners(10);
         RequestOptions requestOptions = RequestOptions.bitmapTransform(roundedCorners);
         Glide.with(context).load(dataBean.getSquare_image_url()).apply(requestOptions).into(viewHolder.img);
+
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HandPicAlbumBean.DataBean dataBean1 = data.get(i);
+                Intent intent = new Intent(context, HandPicDetailActivity.class);
+
+                intent.putExtra("id",dataBean1.getId());
+                intent.putExtra("name",dataBean1.getName());
+                intent.putExtra("count",dataBean1.getCount()+"");
+                intent.putExtra("content",dataBean1.getDescription());
+                intent.putExtra("img",dataBean1.getSquare_image_url());
+                intent.putExtra("bg", dataBean1.getImage());
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

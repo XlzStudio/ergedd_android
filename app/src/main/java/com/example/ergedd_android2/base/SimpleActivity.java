@@ -25,7 +25,7 @@ public abstract class SimpleActivity extends AppCompatActivity {
         bind = ButterKnife.bind(this);
 
         //eventbus传值
-        EventBus.getDefault().register(this);
+       // EventBus.getDefault().register(this);
 
         //布局 和  逻辑
        initViewData();
@@ -45,6 +45,6 @@ public abstract class SimpleActivity extends AppCompatActivity {
             bind.unbind();
         }
         //Eventbus注销
-        EventBus.getDefault().unregister(this);
+        //EventBus.getDefault().unregister(this);
     }
 }
