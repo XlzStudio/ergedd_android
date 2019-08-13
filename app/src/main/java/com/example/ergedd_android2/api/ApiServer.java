@@ -36,13 +36,6 @@ public interface ApiServer {
     Observable<BabyLookTabBean> getlookTab(@Url String url, @Query("channel") String channel, @Query("offset") int offset, @Query("limit") int limit, @Query("addition_album_count") int addition_album_count);
 
 
-    /*
-* 第二个页面的精选头部列表网络解析
-*http://api.t.ergedd.com/api/v1/audio_playlists/261
-* */
-@Headers("Cache-Control: public, max-age=28800")
-@GET
-Observable<HandPicTopBean>getTopData(@Url String url);
 
 
 /*
@@ -107,9 +100,6 @@ Observable<BabyLookSiftThreeImgBean> getLookSift(@Url String url, @Query("channe
     @GET
     Observable<HandPicAlbumBean>getAlbum(@Url String url, @Query("channel") String channel);
 
-
-  
-    
 
     //http://api.t.ergedd.com/api/v1/album_categories/1/albums?channel=new&offset=0&limit=20&sensitive=8
     //宝宝看tab

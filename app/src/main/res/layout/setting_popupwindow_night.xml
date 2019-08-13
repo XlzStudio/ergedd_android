@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="选择睡觉时间"
+        android:layout_gravity="center_horizontal"
+        android:textSize="18dp"
+        android:layout_margin="10dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/d5"/>
+
+    <TextView
+        android:id="@+id/time_20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="20:00"
+        android:textSize="18dp"
+        android:layout_marginLeft="33dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginBottom="13dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/d5"/>
+
+    <TextView
+        android:id="@+id/time_20.3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="20:30"
+        android:textSize="18dp"
+        android:layout_marginLeft="33dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginBottom="13dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/d5"/>
+
+
+    <TextView
+        android:id="@+id/time_21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="21:00"
+        android:textSize="18dp"
+        android:layout_marginLeft="33dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginBottom="13dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/d5"/>
+
+    <TextView
+        android:id="@+id/time_21.3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="21:30"
+        android:textSize="18dp"
+        android:layout_marginLeft="33dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginBottom="13dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/d5"/>
+
+    <TextView
+        android:id="@+id/time_22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="22:00"
+        android:textSize="18dp"
+        android:layout_marginLeft="33dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginBottom="13dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/d5"/>
+
+    <TextView
+        android:id="@+id/time_22.3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="22:30"
+        android:textSize="18dp"
+        android:layout_marginLeft="33dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginBottom="13dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/d5"/>
+
+    <TextView
+        android:id="@+id/time_23"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="23:00"
+        android:textSize="18dp"
+        android:layout_marginLeft="33dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginBottom="13dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/d5"/>
+
+    <TextView
+        android:id="@+id/time_23.3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="23:30"
+        android:textSize="18dp"
+        android:layout_marginLeft="33dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginBottom="13dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/d5"/>
+
+    <TextView
+        android:id="@+id/time_24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="24:00"
+        android:textSize="18dp"
+        android:layout_marginLeft="33dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginBottom="13dp"/>
+
+</LinearLayout>

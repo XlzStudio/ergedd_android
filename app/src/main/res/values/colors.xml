@@ -8,7 +8,11 @@
     <color name="black">#000000</color>
     <color name="grey">#CAC8C8</color>
     <color name="main_colors">#27d081</color>
-
+    <color name="d5">#D5D1D1</color>
     <color name="color_bottom">#4E4E4E</color>
     <color name="d7">#DCD9D9</color>
+    <color name="textba">#9D9D9D</color>
+    <color name="dc">#DCDBDB</color>
+    <color name="e8">#E8E7E7</color>
+    <color name="f1">#F1F1F1</color>
 </resources>
