@@ -1,6 +1,7 @@
 package com.example.ergedd_android2.app;
 
 import android.app.Application;
+import android.content.Intent;
 
 import com.umeng.commonsdk.UMConfigure;
 import com.umeng.socialize.PlatformConfig;

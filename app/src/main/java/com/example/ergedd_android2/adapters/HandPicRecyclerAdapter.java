@@ -1,6 +1,7 @@
 package com.example.ergedd_android2.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -12,6 +13,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.ergedd_android2.R;
+import com.example.ergedd_android2.activitys.HandPicDetailActivity;
 import com.example.ergedd_android2.bean.HandPicAlbumBean;
 import com.example.ergedd_android2.bean.HandPicBottomListBean;
 
@@ -41,7 +43,7 @@ public class HandPicRecyclerAdapter extends RecyclerView.Adapter<HandPicRecycler
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
         HandPicBottomListBean.DataBean dataBean = data.get(i);
         viewHolder.title.setText(dataBean.getName());
         Glide.with(context).load(dataBean.getImage()).into(viewHolder.img0);
@@ -54,19 +56,66 @@ public class HandPicRecyclerAdapter extends RecyclerView.Adapter<HandPicRecycler
             viewHolder.count1.setText(playlistsBean.getCount()+"");
             Glide.with(context).load(playlistsBean.getSquare_image_url()).apply(requestOptions).into(viewHolder.img1);
 
-
             HandPicBottomListBean.DataBean.PlaylistsBean playlistsBean1 = dataBean.getPlaylists().get(1);
             viewHolder.name2.setText(playlistsBean1.getName());
             viewHolder.count2.setText(playlistsBean1.getCount()+"");
             Glide.with(context).load(playlistsBean1.getSquare_image_url()).apply(requestOptions).into(viewHolder.img2);
 
-
             HandPicBottomListBean.DataBean.PlaylistsBean playlistsBean2 = dataBean.getPlaylists().get(2);
             viewHolder.name3.setText(playlistsBean2.getName());
             viewHolder.count3.setText(playlistsBean2.getCount()+"");
             Glide.with(context).load(playlistsBean2.getSquare_image_url()).apply(requestOptions).into(viewHolder.img3);
+            imgClick(i,viewHolder.img1,viewHolder.img2,viewHolder.img3);
 
 
+    }
+
+    private void imgClick(@NonNull final int i,ImageView img1,ImageView img2,ImageView img3) {
+        img1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HandPicBottomListBean.DataBean.PlaylistsBean dataBean1 = data.get(i).getPlaylists().get(0);
+                Intent intent = new Intent(context, HandPicDetailActivity.class);
+
+                intent.putExtra("id",dataBean1.getId());
+                intent.putExtra("name",dataBean1.getName());
+                intent.putExtra("count",dataBean1.getCount()+"");
+                intent.putExtra("content",dataBean1.getDescription());
+                intent.putExtra("img",dataBean1.getSquare_image_url());
+                intent.putExtra("bg", dataBean1.getImage());
+                context.startActivity(intent);
+            }
+        });
+        img2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HandPicBottomListBean.DataBean.PlaylistsBean dataBean1 = data.get(i).getPlaylists().get(1);
+                Intent intent = new Intent(context, HandPicDetailActivity.class);
+
+                intent.putExtra("id",dataBean1.getId());
+                intent.putExtra("name",dataBean1.getName());
+                intent.putExtra("count",dataBean1.getCount()+"");
+                intent.putExtra("content",dataBean1.getDescription());
+                intent.putExtra("img",dataBean1.getSquare_image_url());
+                intent.putExtra("bg", dataBean1.getImage());
+                context.startActivity(intent);
+            }
+        });
+        img3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HandPicBottomListBean.DataBean.PlaylistsBean dataBean1 = data.get(i).getPlaylists().get(2);
+                Intent intent = new Intent(context, HandPicDetailActivity.class);
+
+                intent.putExtra("id",dataBean1.getId());
+                intent.putExtra("name",dataBean1.getName());
+                intent.putExtra("count",dataBean1.getCount()+"");
+                intent.putExtra("content",dataBean1.getDescription());
+                intent.putExtra("img",dataBean1.getSquare_image_url());
+                intent.putExtra("bg", dataBean1.getImage());
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
