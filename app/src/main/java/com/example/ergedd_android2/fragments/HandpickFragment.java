@@ -2,19 +2,14 @@ package com.example.ergedd_android2.fragments;
 
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 import com.example.ergedd_android2.Contract.HandPicAlbumContract;
 import com.example.ergedd_android2.R;
@@ -24,7 +19,6 @@ import com.example.ergedd_android2.adapters.HandPicRecyclerAdapter;
 import com.example.ergedd_android2.api.ApiServer;
 import com.example.ergedd_android2.base.BaseFragment;
 import com.example.ergedd_android2.base.BaseObsever;
-import com.example.ergedd_android2.bean.BabyLookTabBean;
 import com.example.ergedd_android2.bean.HandPicAlbumBean;
 import com.example.ergedd_android2.bean.HandPicBottomListBean;
 import com.example.ergedd_android2.bean.HandPicTopBean;
@@ -35,7 +29,6 @@ import com.example.ergedd_android2.utils.RxUtils;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 
@@ -85,7 +78,6 @@ public class HandpickFragment extends BaseFragment<HandpickFragment, HandPickPre
         handPicRecyclerAdapter = new HandPicRecyclerAdapter(getActivity());
         recyclerBabyHear.setAdapter(handPicRecyclerAdapter);
 
-
         recyclerBabyHear.addItemDecoration(new DividerItemDecoration(getActivity(),DividerItemDecoration.VERTICAL));
 
         mPresenter.attach(this);
@@ -115,7 +107,6 @@ public class HandpickFragment extends BaseFragment<HandpickFragment, HandPickPre
             case R.id.baby_hear_hali:
                 getTopData(258);
                 startIntent();
-
                 break;
             case R.id.baby_hear_peiqi:
                 getTopData(261);
