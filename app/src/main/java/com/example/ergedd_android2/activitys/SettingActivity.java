@@ -13,6 +13,7 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.ergedd_android2.R;
 
@@ -34,6 +35,11 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
      * 21:00
      */
     private TextView mTimeNight;
+    private RelativeLayout mFrequency;
+    private PopupWindow popupView;
+    private int winHeight;
+    private Rect rec1t;
+    private TextView mFrequencyTime;
 
 
     @Override
@@ -72,9 +78,17 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
             }
         });
         createPop();
+        mFrequency = (RelativeLayout) findViewById(R.id.frequency);
+        mFrequency.setOnClickListener(this);
+        mFrequencyTime = (TextView) findViewById(R.id.frequency_time);
     }
 
     private void createPop() {
+        rec1t = new Rect();
+        getWindow().getDecorView().getWindowVisibleDisplayFrame(rec1t);
+        winHeight = getWindow().getDecorView().getHeight();
+
+
         View inflate = View.inflate(this, R.layout.setting_popupwindow_morning, null);
         window = new PopupWindow(inflate);
         window.setAnimationStyle(R.style.take_photo_anim);
@@ -148,6 +162,37 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
         time_23.setOnClickListener(this);
         time_23_3.setOnClickListener(this);
         time_24.setOnClickListener(this);
+
+        View view = View.inflate(this, R.layout.setting_popupwindow_frequeny, null);
+        popupView = new PopupWindow(view);
+        popupView.setAnimationStyle(R.style.take_photo_anim);
+        //设置SelectPicPopupWindow弹出窗体的宽
+        popupView.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
+        //设置SelectPicPopupWindow弹出窗体的高
+        popupView.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
+        //设置SelectPicPopupWindow弹出窗体可点击
+        popupView.setFocusable(true);
+
+        popupView.setOnDismissListener(new PopupWindow.OnDismissListener() {
+
+            @Override
+            public void onDismiss() {
+                WindowManager.LayoutParams lp = getWindow().getAttributes();
+                lp.alpha = 1f;
+                getWindow().setAttributes(lp);
+            }
+        });
+
+        TextView rest_1 = view.findViewById(R.id.rest_1);
+        TextView rest_2 = view.findViewById(R.id.rest_2);
+        TextView rest_3 = view.findViewById(R.id.rest_3);
+        TextView rest_4 = view.findViewById(R.id.rest_4);
+        TextView rest_5 = view.findViewById(R.id.rest_5);
+        rest_1.setOnClickListener(this);
+        rest_2.setOnClickListener(this);
+        rest_3.setOnClickListener(this);
+        rest_4.setOnClickListener(this);
+        rest_5.setOnClickListener(this);
     }
 
     @Override
@@ -156,91 +201,123 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
             default:
                 break;
             case R.id.rest_morning:
-                WindowManager.LayoutParams lp = getWindow().getAttributes();
-                lp.alpha = 0.7f;
-                getWindow().setAttributes(lp);
-
-
-                Rect rect = new Rect();
-                getWindow().getDecorView().getWindowVisibleDisplayFrame(rect);
-                int winHeight = getWindow().getDecorView().getHeight();
-                window.showAtLocation(getWindow().getDecorView(), Gravity.BOTTOM, 0, winHeight - rect.bottom);
-                break;
-            case R.id.rest_nigh:
                 WindowManager.LayoutParams lp1 = getWindow().getAttributes();
                 lp1.alpha = 0.7f;
                 getWindow().setAttributes(lp1);
-
-
-                Rect rec1t = new Rect();
-                getWindow().getDecorView().getWindowVisibleDisplayFrame(rec1t);
-                int winHeight1 = getWindow().getDecorView().getHeight();
-                popupWindow.showAtLocation(getWindow().getDecorView(), Gravity.BOTTOM, 0, winHeight1 - rec1t.bottom);
+                window.showAtLocation(getWindow().getDecorView(), Gravity.BOTTOM, 0, winHeight - rec1t.bottom);
+                break;
+            case R.id.rest_nigh:
+                WindowManager.LayoutParams lp12 = getWindow().getAttributes();
+                lp12.alpha = 0.7f;
+                getWindow().setAttributes(lp12);
+                popupWindow.showAtLocation(getWindow().getDecorView(), Gravity.BOTTOM, 0, winHeight - rec1t.bottom);
                 break;
 
             case R.id.time_6:
                 mTimeMorning.setText("06:00");
                 window.dismiss();
+                Toast.makeText(this, "起床时间已更新:06:00", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.time_6_3:
                 mTimeMorning.setText("06:30");
                 window.dismiss();
+                Toast.makeText(this, "起床时间已更新:06:30", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.time_7:
                 mTimeMorning.setText("07:00");
                 window.dismiss();
+                Toast.makeText(this, "起床时间已更新:07:00", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.time_7_3:
                 mTimeMorning.setText("07:30");
                 window.dismiss();
+                Toast.makeText(this, "起床时间已更新:07:30", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.time_8:
                 mTimeMorning.setText("08:00");
                 window.dismiss();
+                Toast.makeText(this, "起床时间已更新:08:00", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.time_8_3:
                 mTimeMorning.setText("08:30");
                 window.dismiss();
+                Toast.makeText(this, "起床时间已更新:08:30", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.time_9:
                 mTimeMorning.setText("09:00");
                 window.dismiss();
+                Toast.makeText(this, "起床时间已更新:09:00", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.time_20:
                 mTimeNight.setText("20:00");
                 popupWindow.dismiss();
+                Toast.makeText(this, "睡觉时间已更新:20:00", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.time_20_3:
                 mTimeNight.setText("20:30");
                 popupWindow.dismiss();
+                Toast.makeText(this, "睡觉时间已更新:20:30", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.time_21:
                 mTimeNight.setText("21:00");
                 popupWindow.dismiss();
+                Toast.makeText(this, "睡觉时间已更新:21:00", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.time_21_3:
                 mTimeNight.setText("21:30");
                 popupWindow.dismiss();
+                Toast.makeText(this, "睡觉时间已更新:21:30", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.time_22:
                 mTimeNight.setText("22:00");
                 popupWindow.dismiss();
+                Toast.makeText(this, "睡觉时间已更新:22:00", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.time_22_3:
                 mTimeNight.setText("22:30");
                 popupWindow.dismiss();
+                Toast.makeText(this, "睡觉时间已更新:22:30", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.time_23:
                 mTimeNight.setText("23:00");
                 popupWindow.dismiss();
+                Toast.makeText(this, "睡觉时间已更新:23:00", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.time_23_3:
                 mTimeNight.setText("23:30");
                 popupWindow.dismiss();
+                Toast.makeText(this, "睡觉时间已更新:23:30", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.time_24:
                 mTimeNight.setText("24:00");
                 popupWindow.dismiss();
+                Toast.makeText(this, "睡觉时间已更新:24:00", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.frequency:
+                WindowManager.LayoutParams lp13 = getWindow().getAttributes();
+                lp13.alpha = 0.7f;
+                getWindow().setAttributes(lp13);
+                popupView.showAtLocation(getWindow().getDecorView(), Gravity.BOTTOM, 0, winHeight - rec1t.bottom);
+                break;
+            case R.id.rest_1:
+                mFrequencyTime.setText("");
+                popupView.dismiss();
+                break;
+            case R.id.rest_2:
+                mFrequencyTime.setText("15分钟");
+                popupView.dismiss();
+                break;
+            case R.id.rest_3:
+                mFrequencyTime.setText("30分钟");
+                popupView.dismiss();
+                break;
+            case R.id.rest_4:
+                mFrequencyTime.setText("45分钟");
+                popupView.dismiss();
+                break;
+            case R.id.rest_5:
+                mFrequencyTime.setText("60分钟");
+                popupView.dismiss();
                 break;
         }
     }

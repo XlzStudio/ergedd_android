@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="选择休息频率"
+        android:layout_gravity="center_horizontal"
+        android:textSize="18dp"
+        android:layout_margin="10dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/d5"/>
+
+    <TextView
+        android:id="@+id/rest_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="不休息"
+        android:textSize="18dp"
+        android:layout_marginLeft="33dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginBottom="13dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/d5"/>
+
+    <TextView
+        android:id="@+id/rest_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="15分钟"
+        android:textSize="18dp"
+        android:layout_marginLeft="33dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginBottom="13dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/d5"/>
+
+    <TextView
+        android:id="@+id/rest_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="30分钟"
+        android:textSize="18dp"
+        android:layout_marginLeft="33dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginBottom="13dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/d5"/>
+
+    <TextView
+        android:id="@+id/rest_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="45分钟"
+        android:textSize="18dp"
+        android:layout_marginLeft="33dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginBottom="13dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/d5"/>
+
+    <TextView
+        android:id="@+id/rest_5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="60分钟"
+        android:textSize="18dp"
+        android:layout_marginLeft="33dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginBottom="13dp"/>
+
+</LinearLayout>
