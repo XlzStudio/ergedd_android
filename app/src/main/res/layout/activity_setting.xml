@@ -459,12 +459,22 @@
 
 
                 <ImageView
+                    android:id="@+id/frequency_return"
                     android:layout_width="17dp"
                     android:layout_height="17dp"
                     android:layout_alignParentRight="true"
                     android:layout_marginTop="9dp"
                     android:layout_marginRight="10dp"
                     android:src="@mipmap/icon_enter" />
+
+                <TextView
+                    android:id="@+id/frequency_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/textba"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@+id/frequency_return"/>
             </RelativeLayout>
 
             <View
