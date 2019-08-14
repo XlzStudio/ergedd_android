@@ -1,5 +1,6 @@
 package com.example.ergedd_android2.activitys;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.os.Bundle;
@@ -40,6 +41,9 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
     private int winHeight;
     private Rect rec1t;
     private TextView mFrequencyTime;
+    private RelativeLayout Renew;
+    private RelativeLayout Record;
+    private RelativeLayout issue;
 
 
     @Override
@@ -81,6 +85,12 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
         mFrequency = (RelativeLayout) findViewById(R.id.frequency);
         mFrequency.setOnClickListener(this);
         mFrequencyTime = (TextView) findViewById(R.id.frequency_time);
+        Renew = (RelativeLayout) findViewById(R.id.Renew);
+        Renew.setOnClickListener(this);
+        Record = (RelativeLayout) findViewById(R.id.Record);
+        Record.setOnClickListener(this);
+        issue = (RelativeLayout) findViewById(R.id.issue);
+        issue.setOnClickListener(this);
     }
 
     private void createPop() {
@@ -318,6 +328,15 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
             case R.id.rest_5:
                 mFrequencyTime.setText("60分钟");
                 popupView.dismiss();
+                break;
+            case R.id.Renew:
+                startActivity(new Intent(SettingActivity.this, RenewActivity.class));
+                break;
+            case R.id.Record:
+                startActivity(new Intent(SettingActivity.this, RecordActivity.class));
+                break;
+            case R.id.issue:
+                startActivity(new Intent(SettingActivity.this, IssueActivity.class));
                 break;
         }
     }

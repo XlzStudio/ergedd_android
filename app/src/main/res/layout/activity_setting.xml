@@ -552,6 +552,39 @@
                     android:src="@mipmap/icon_enter" />
             </RelativeLayout>
 
+            <RelativeLayout
+                android:id="@+id/Record"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="2dp">
+
+                <ImageView
+                    android:id="@+id/Record_img"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="3dp"
+                    android:src="@mipmap/setting_icon_vip_record" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="9dp"
+                    android:layout_toRightOf="@id/Record_img"
+                    android:text="交易记录"
+                    android:textSize="15dp" />
+
+
+                <ImageView
+                    android:layout_width="17dp"
+                    android:layout_height="17dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="9dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@mipmap/icon_enter" />
+            </RelativeLayout>
+
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="13dp"

@@ -114,7 +114,9 @@ public class ParticularsActivity<V extends BabylookParContract.BabylookParView> 
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.comment:
-                Toast.makeText(this, "暂无评论", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(ParticularsActivity.this, CommentActivity.class);
+                intent.putExtra("id",id);
+                startActivity(intent);
                 break;
             case R.id.share:
                 share();

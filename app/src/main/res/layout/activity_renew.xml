@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activitys.RenewActivity"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/renew_Toolbar"
+        android:minHeight="?actionBarSize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/renew_toolbar_title"
+            android:textSize="18dp"
+            android:textColor="@color/black"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </android.support.v7.widget.Toolbar>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp">
+        <TextView
+            android:text="连续包月/自动续费介绍"
+            android:textSize="16dp"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_marginTop="10dp"
+            android:textSize="16dp"
+            android:text="订阅周期：连续包月为1个月。连续包月服务为您省去了每月手动续费的麻烦，省钱又省心，是万千用户的首选！"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_marginTop="10dp"
+            android:textSize="16dp"
+            android:text="付款：用户确认购买并付款后记入微信账户。"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_marginTop="10dp"
+            android:textSize="16dp"
+            android:text="取消续订：如需取消续订，请在当前订阅周期到期前24小时以前，手动在微信钱包中关闭自动续订功能。可按以下方法进行关闭。"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_marginTop="10dp"
+            android:textSize="16dp"
+            android:text="具体步骤如下：打开【微信】→点击【我的】→点击【钱包】→点击右上角更多按钮→点击【支付管理】→点击【自动扣费】→选择儿歌点点VIP自动续费→点击【关闭服务】即可。"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_marginTop="10dp"
+            android:textSize="16dp"
+            android:text="续订：微信账户会在到期前24小时内扣费，扣费成功后订阅周期顺延"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>

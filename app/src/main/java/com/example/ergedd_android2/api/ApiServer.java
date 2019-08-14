@@ -8,6 +8,7 @@ import com.example.ergedd_android2.bean.BabyLookSiftItemBean;
 import com.example.ergedd_android2.bean.BabyLookSiftThreeImgBean;
 import com.example.ergedd_android2.bean.BabyLookTabBean;
 import com.example.ergedd_android2.bean.BabylookParBean;
+import com.example.ergedd_android2.bean.CommentWriteBean;
 import com.example.ergedd_android2.bean.HandPicAlbumBean;
 import com.example.ergedd_android2.bean.HandPicBottomListBean;
 import com.example.ergedd_android2.bean.HandPicDetailBean;
@@ -113,7 +114,12 @@ public interface ApiServer {
     //http://api.t.ergedd.com/api/v1/albums/514/videos?channel=new&offset=0&limit=20&sensitive=8
     //宝宝看tab
     @GET("albums/{id}/videos?channel=new&offset=0&limit=20&sensitive=8")
-    Observable<BabylookParBean> getBabylookParData(@Path("id") int id);
+    Observable<BabylookParBean> getBabylookParData(@Path("id") int id);//http://api.t.ergedd.com/api/v1/albums/514/videos?channel=new&offset=0&limit=20&sensitive=8
+
+    //http://api.ergedd.com/api/v1/albums/33/comments?offset=0&limit=20
+    //详情评论数据
+    @GET("albums/{id}/comments?offset=0&limit=20")
+    Observable<CommentWriteBean> getCommentWriteData(@Path("id") int id);
 
 
 }
