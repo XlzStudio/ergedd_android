@@ -1,6 +1,5 @@
 package com.example.ergedd_android2;
 
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentTransaction;
@@ -10,6 +9,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.ergedd_android2.activitys.SettingActivity;
 import com.example.ergedd_android2.base.BaseActivity;
@@ -18,13 +18,13 @@ import com.example.ergedd_android2.constant.Constants;
 import com.example.ergedd_android2.fragments.BabyHearFragment;
 import com.example.ergedd_android2.fragments.BabyLookFragment;
 import com.example.ergedd_android2.fragments.CacheFragment;
+import com.example.ergedd_android2.utils.AppCleanMgr;
 import com.example.ergedd_android2.utils.PopUtils;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 //项目总经理：马屹延
@@ -177,17 +177,16 @@ public class MainActivity extends BaseActivity {
     }
 
 
-
-
     @OnClick({R.id.test, R.id.setting})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.test:
-
+                Toast.makeText(this, "已清理" + AppCleanMgr.getAppClearSize(this), Toast.LENGTH_SHORT).show();
+                AppCleanMgr.cleanApplicationData(this);
                 break;
             case R.id.setting:
                 PopUtils popUtils = new PopUtils();
-                popUtils.statrPop(setting,this, SettingActivity.class);
+                popUtils.statrPop(setting, this, SettingActivity.class);
                 break;
         }
     }
