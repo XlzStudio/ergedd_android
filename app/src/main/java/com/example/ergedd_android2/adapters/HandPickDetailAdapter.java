@@ -62,6 +62,7 @@ public class HandPickDetailAdapter extends RecyclerView.Adapter<HandPickDetailAd
 
                 }
 
+                intent.putExtra("id",i);
                 intent.putParcelableArrayListExtra("play",playMusicBeans);
 
                 LocalBroadcastManager.getInstance(context).sendBroadcast(intent);

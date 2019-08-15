@@ -56,31 +56,14 @@
                     android:layout_height="wrap_content"
                     android:text="彩虹花" />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/name_play_babyhear">
-
                     <TextView
                         android:id="@+id/progress_play_babyhear"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="10dp"
+                        android:layout_below="@id/name_play_babyhear"
                         android:text="01:07" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="10dp"
-                        android:text="/" />
-
-                    <TextView
-                        android:id="@+id/lenth_play_babyhear"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="10dp"
-                        android:text="05:13" />
-                </LinearLayout>
             </RelativeLayout>
         </LinearLayout>
 

@@ -55,6 +55,11 @@ public class BabyLookFragment extends BaseFragment<BabyLookTabContract.BabyLookV
             fragments.add(babyLookInnerFragment);
             strings.add(babyLookTabBeans.getData().get(i).getName());
         }
+
+        BabyFriendFragment babyFriendFragment = new BabyFriendFragment();
+        fragments.add(babyFriendFragment);
+        strings.add("伙伴");
+
         BabyLookVpadapter babyLookVpadapter = new BabyLookVpadapter(getChildFragmentManager(), fragments,strings);
         babyLookVp.setAdapter(babyLookVpadapter);
         babyLookTab.setupWithViewPager(babyLookVp);

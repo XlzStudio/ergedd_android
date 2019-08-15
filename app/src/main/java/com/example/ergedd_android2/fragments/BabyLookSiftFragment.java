@@ -175,9 +175,4 @@ public class BabyLookSiftFragment extends BaseFragment<BabyLookSiftFragment, Bab
         startActivity(intent4);
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
-    }
 }

@@ -1,5 +1,6 @@
 package com.example.ergedd_android2.api;
 
+import com.example.ergedd_android2.bean.BabyFriendBean;
 import com.example.ergedd_android2.bean.BabyHearBean;
 import com.example.ergedd_android2.bean.BabyHearItemBean;
 import com.example.ergedd_android2.bean.BabyLookInnerBean;
@@ -34,6 +35,16 @@ public interface ApiServer {
     @Headers("Cache-Control: public, max-age=28800")
     @GET
     Observable<BabyLookTabBean> getlookTab(@Url String url, @Query("channel") String channel, @Query("offset") int offset, @Query("limit") int limit, @Query("addition_album_count") int addition_album_count);
+
+
+    /*
+     * 第一个页面的伙伴
+     *
+        http://api.ergedd.com/api/v1/app_configs?types=brand_area
+     * */
+    @Headers("Cache-Control: public, max-age=28800")
+    @GET
+    Observable<BabyFriendBean> getFriend(@Url String url, @Query("types") String types);
 
     /*
      * 第二个页面的精选头部列表网络解析
