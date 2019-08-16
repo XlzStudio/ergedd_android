@@ -5,22 +5,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:id="@+id/bg_music"
+    android:background="@color/grey"
     tools:context=".activitys.PlayMusicActivity">
 
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        app:titleTextColor="@color/white"
         android:id="@+id/toolbar_Music"></android.support.v7.widget.Toolbar>
 
-    <android.support.v7.widget.RecyclerView
+    <android.support.v4.view.ViewPager
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:id="@+id/recycler_music"/>
+        android:id="@+id/vp_music"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -41,14 +45,54 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginBottom="20dp"
-        android:gravity="center_vertical">
+        android:layout_marginBottom="20dp">
         <ImageView
             android:layout_marginLeft="20dp"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:id="@+id/mode_music"
+            android:layout_centerVertical="true"
             android:src="@drawable/audio_player_mode_order"/>
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/play_music"
+            android:src="@drawable/audio_player_play"
+            android:layout_centerInParent="true"/>
+
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/up_music"
+            android:layout_toLeftOf="@id/play_music"
+            android:layout_marginRight="30dp"
+            android:src="@drawable/audio_player_prev"
+            android:layout_centerInParent="true"/>
+
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/next_music"
+            android:layout_toRightOf="@id/play_music"
+            android:layout_marginLeft="30dp"
+            android:src="@drawable/audio_player_next"
+            android:layout_centerInParent="true"/>
+
+
+        <ImageView
+            android:layout_marginLeft="20dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:id="@+id/timer_music"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/audio_player_timer"/>
+
+
     </RelativeLayout>
 
 

@@ -11,10 +11,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ergedd_android2.Constant.Constants;
 import com.example.ergedd_android2.activitys.SettingActivity;
 import com.example.ergedd_android2.base.BaseActivity;
 import com.example.ergedd_android2.base.BasePresenter;
-import com.example.ergedd_android2.constant.Constants;
 import com.example.ergedd_android2.fragments.BabyHearFragment;
 import com.example.ergedd_android2.fragments.BabyLookFragment;
 import com.example.ergedd_android2.fragments.CacheFragment;

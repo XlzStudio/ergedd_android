@@ -12,6 +12,7 @@ import android.util.Log;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.example.ergedd_android2.Constant.Constants;
 import com.example.ergedd_android2.bean.PlayMusicBean;
 import com.example.ergedd_android2.utils.TimerFormatter;
 
@@ -41,7 +42,7 @@ public class HandPickService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-
+        mediaPlayer = new MediaPlayer();
     }
 
     @Override
@@ -60,83 +61,108 @@ public class HandPickService extends Service {
         public HandPickService getService(){
             return HandPickService.this;
         }
-
-        public MediaPlayer getPlayer(){
-            return mediaPlayer;
-        }
-
     }
 
     /**
      * 播放音乐的方法
      * @param currentPath  音乐文件路径
      */
-    public void playMusic(String currentPath){
-        mediaPlayer = new MediaPlayer();
-        try {
-            if(mediaPlayer.isPlaying()){//如果当前正在播放音乐，则先停止
-                mediaPlayer.stop();
+    public synchronized void playMusic(final String currentPath){
+        new Thread(){
+            @Override
+            public void run() {
+                super.run();
+                try {
+                    if(mediaPlayer.isPlaying()){//如果当前正在播放音乐，则先停止
+                        mediaPlayer.stop();
+                    }
+                    mediaPlayer.reset();//重置播放器状态
+                    mediaPlayer.setDataSource(currentPath);
+                    mediaPlayer.prepare();
+
+                    mediaPlayer.start();
+
+                    // updateSeekBar();
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
             }
-            mediaPlayer.reset();//重置播放器z状态
-            mediaPlayer.setDataSource(currentPath);
-            mediaPlayer.prepare();
-
-            mediaPlayer.start();
-
-            // updateSeekBar();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        }.start();
 
     }
 
     //设计一些歌曲播放、暂停、停止、退出相应的逻辑，此外还设计了上一首和下一首的逻辑
 
-    public void playOrPause() {
-        if(mediaPlayer.isPlaying()){
-            mediaPlayer.pause();
-        } else {
-            mediaPlayer.start();
-        }
+    public synchronized void playOrPause() {
+
+        new Thread(){
+            @Override
+            public void run() {
+                super.run();
+                if(mediaPlayer.isPlaying()){
+                    mediaPlayer.pause();
+                } else {
+                    mediaPlayer.start();
+                }
+            }
+        }.start();
+
     }
 
     private int musicIndex = 0;//记录点击下标
 
-    public void nextMusic(ArrayList<PlayMusicBean> musics,int index) {
-        musicIndex=index;
-        if(mediaPlayer != null && musicIndex < musics.size()) {
-            mediaPlayer.stop();
-            try {
-                mediaPlayer.reset();
-                mediaPlayer.setDataSource(musics.get(musicIndex+1).getResource());
-                musicIndex++;
-                mediaPlayer.prepare();
-                mediaPlayer.seekTo(0);
-                mediaPlayer.start();
-            } catch (Exception e) {
-                Log.d("hint", "can't jump next music");
-                e.printStackTrace();
+    public synchronized void nextMusic(final ArrayList<PlayMusicBean> musics) {
+//        musicIndex=index;
+
+        new Thread(){
+            @Override
+            public void run() {
+                super.run();
+                if(mediaPlayer != null && Constants.MUSICINDEX < musics.size()) {//////////
+                    mediaPlayer.stop();
+                    try {
+                        mediaPlayer.reset();
+                        mediaPlayer.setDataSource(musics.get(Constants.MUSICINDEX+1).getResource());/////////
+                        Constants.MUSICINDEX++;/////////
+                        mediaPlayer.prepare();
+                        mediaPlayer.seekTo(0);
+                        mediaPlayer.start();
+                    } catch (Exception e) {
+                        Log.d("hint", "can't jump next music");
+                        e.printStackTrace();
+                    }
+                }
             }
-        }
+        }.start();
+
     }
 
-    public void upMusic(ArrayList<PlayMusicBean> musics,int index) {
-        musicIndex=index;
-        if(mediaPlayer != null && musicIndex > 0) {
-            mediaPlayer.stop();
-            try {
-                mediaPlayer.reset();
-                mediaPlayer.setDataSource(musics.get(musicIndex+1).getResource());
-                musicIndex--;
-                mediaPlayer.prepare();
-                mediaPlayer.seekTo(0);
-                mediaPlayer.start();
-            } catch (Exception e) {
-                Log.d("hint", "can't jump pre music");
-                e.printStackTrace();
+    public synchronized void upMusic(final ArrayList<PlayMusicBean> musics) {
+//        musicIndex=index;
+
+        new Thread(){
+            @Override
+            public void run() {
+                super.run();
+                if(mediaPlayer != null && Constants.MUSICINDEX > 0) {
+                    mediaPlayer.stop();
+                    try {
+                        mediaPlayer.reset();
+                        mediaPlayer.setDataSource(musics.get(Constants.MUSICINDEX+1).getResource());
+                        Constants.MUSICINDEX--;
+                        mediaPlayer.prepare();
+                        mediaPlayer.seekTo(0);
+                        mediaPlayer.start();
+                    } catch (Exception e) {
+                        Log.d("hint", "can't jump pre music");
+                        e.printStackTrace();
+                    }
+                }
             }
-        }
+        }.start();
+
     }
 
     //音乐播放进度条
@@ -148,6 +174,7 @@ public class HandPickService extends Service {
             final int duration = mediaPlayer.getDuration();
             int currentPosition = mediaPlayer.getCurrentPosition();
 
+
             progressBar.setMax(duration);
             progressBar.setProgress(currentPosition);
 
@@ -157,6 +184,11 @@ public class HandPickService extends Service {
                     formatterTime(mediaPlayer.getCurrentPosition())+"/"+
                     TimerFormatter.formatterTime(mediaPlayer.getDuration()));
 
+            Intent intent = new Intent();
+            intent.setAction("music");
+            intent.putExtra("duration",duration);
+            intent.putExtra("currentPosition",currentPosition);
+            LocalBroadcastManager.getInstance(HandPickService.this).sendBroadcast(intent);
 
             if(mediaPlayer.getCurrentPosition() == mediaPlayer.getDuration()){
                 timer.cancel();
@@ -172,7 +204,6 @@ public class HandPickService extends Service {
             public void run() {
 
                 handler.sendEmptyMessage(1);
-                //LocalBroadcastManager.getInstance(HandPickService.this).sendBroadcast(intent);
             }
         },0,50);
 

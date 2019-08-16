@@ -23,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.example.ergedd_android2.Constant.Constants;
 import com.example.ergedd_android2.Contract.BabyHearContract;
 import com.example.ergedd_android2.R;
 import com.example.ergedd_android2.activitys.HandPickService;
@@ -69,13 +70,12 @@ public class BabyHearFragment<V extends BabyHearContract.BabyHearView> extends B
     ImageView playNextBabyhear;
     @BindView(R.id.play_word_babyhear)
     ImageView playWordBabyhear;
-    private View view;
     private ArrayList<Fragment> fs;
     private ArrayList<String> title;
 //    private Unbinder unbinder;
     private static final String TAG = "BabyHearFragment";
     private ServiceConnection con;
-    private MediaPlayer player;
+    private MediaPlayer mediaPlayer;
     private HandPickService pickService;
     private ArrayList<PlayMusicBean> play;
 
@@ -101,7 +101,10 @@ public class BabyHearFragment<V extends BabyHearContract.BabyHearView> extends B
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction("id");
         intentFilter.addAction("play");
-        intentFilter.addAction("progress");
+
+        intentFilter.addAction("isPlay1");
+        intentFilter.addAction("up1");
+        intentFilter.addAction("next1");
         LocalBroadcastManager.getInstance(getContext()).registerReceiver(broadcastReceiver, intentFilter);
 
         fs = new ArrayList<>();
@@ -149,6 +152,7 @@ public class BabyHearFragment<V extends BabyHearContract.BabyHearView> extends B
 
     }
 
+    private MediaPlayer player1;
     //广播接收器
     BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
         @Override
@@ -172,12 +176,13 @@ public class BabyHearFragment<V extends BabyHearContract.BabyHearView> extends B
 //                progressBar.setProgress(duration);
 //                progressBar.setMax(currentPosition);
 
+                //点击条目，广播集合
              }else if ("play".equals(action)) {
 
 
-                NameIndex = intent.getIntExtra("id",-1);
+//                NameIndex = intent.getIntExtra("id",-1);
                 play = intent.getParcelableArrayListExtra("play");
-                namePlayBabyhear.setText(play.get(NameIndex).getName());
+                namePlayBabyhear.setText(play.get(Constants.MUSICINDEX).getName());
 
 
                 //启动后台服务
@@ -188,10 +193,11 @@ public class BabyHearFragment<V extends BabyHearContract.BabyHearView> extends B
 
                         HandPickService.MusicBinder binder = (HandPickService.MusicBinder) service;
                         pickService = binder.getService();
+                        mediaPlayer = binder.getPlayer();
 
                         pickService.getProgress(progressBar,progressPlayBabyhear,lenthPlayBabyhear);
-                        pickService.playProgress(play,NameIndex);
-                        pickService.playMusic(play.get(NameIndex).getResource());
+                        pickService.playProgress(play,Constants.MUSICINDEX);////////////
+                        pickService.playMusic(play.get(Constants.MUSICINDEX).getResource());///////////
                     }
 
                     @Override
@@ -201,8 +207,19 @@ public class BabyHearFragment<V extends BabyHearContract.BabyHearView> extends B
                 };
                 getActivity().bindService(intent1, con, Context.BIND_AUTO_CREATE);
 
-            }
+            }else if("isPlay1".equals(action)){
 
+                Log.e("liangxq", "onReceive: 停止" );
+                pickService.playOrPause();
+
+            }else if("up1".equals(action)){
+
+                pickService.upMusic(play);
+
+            }else if("next1".equals(action)){
+
+                pickService.nextMusic(play);
+            }
         }
     };
 
@@ -216,55 +233,77 @@ public class BabyHearFragment<V extends BabyHearContract.BabyHearView> extends B
     }
 
     private boolean isPlay=false;
-    private int NameIndex;//记录点击的下标
     @OnClick({R.id.play_babyhear, R.id.play_up_babyhear, R.id.play_next_babyhear, R.id.play_word_babyhear})
     public void onClick(View view) {
+
+//        Intent intentMusic = new Intent();
+
         switch (view.getId()) {
             case R.id.play_babyhear:
 
                 //歌曲播放、暂停
                 pickService.playOrPause();//需要非空判断
 
-                if (!isPlay){
-                    isPlay=true;
+                if (!Constants.ISPLAY){
+                    Constants.ISPLAY=true;
                     playBabyhear.setImageResource(R.drawable.audio_player_pause);
                 }else {
-                    isPlay=false;
+                    Constants.ISPLAY=false;
                     playBabyhear.setImageResource(R.drawable.audio_player_play);
                 }
 
+                Intent intentMusic = new Intent();
+                intentMusic.putParcelableArrayListExtra("play",play);
+                intentMusic.setAction("isPlay");
+                LocalBroadcastManager.getInstance(getActivity()).sendBroadcast(intentMusic);
                 break;
             case R.id.play_up_babyhear:
 
                 //上首歌曲
-                if ( NameIndex >0){
+                if ( Constants.MUSICINDEX >0){
 
-                    namePlayBabyhear.setText(play.get(NameIndex-1).getName());
-                    pickService.upMusic(play,NameIndex);
-                    NameIndex--;
+                    namePlayBabyhear.setText(play.get(Constants.MUSICINDEX-1).getName());////////
+                    pickService.upMusic(play);
+//                    NameIndex--;
+                    Constants.MUSICINDEX--;
                 }
 
 
+
+                Intent intentMusic1 = new Intent();
+                intentMusic1.setAction("up");
+                intentMusic1.putExtra("index",Constants.MUSICINDEX);
+                LocalBroadcastManager.getInstance(getActivity()).sendBroadcast(intentMusic1);
                 break;
             case R.id.play_next_babyhear:
 
                 //下首歌曲
-                if ( NameIndex < play.size()){
+                if ( Constants.MUSICINDEX < play.size()){
 
-                    namePlayBabyhear.setText(play.get(NameIndex+1).getName());
-                    pickService.nextMusic(play,NameIndex);
-                    NameIndex++;
+                    namePlayBabyhear.setText(play.get(Constants.MUSICINDEX+1).getName());
+                    pickService.nextMusic(play);
+//                    NameIndex++;
+                    Constants.MUSICINDEX++;
                 }
 
-
-                //pickService.playProgress(play,NameIndex);
+//
+                Intent intentMusic2 = new Intent();
+                intentMusic2.setAction("next");
+                intentMusic2.putExtra("index",Constants.MUSICINDEX);
+                LocalBroadcastManager.getInstance(getActivity()).sendBroadcast(intentMusic2);
                 break;
             case R.id.play_word_babyhear:
+
                 Intent intent = new Intent(getActivity(), PlayMusicActivity.class);
                 intent.putParcelableArrayListExtra("play",play);
-                intent.putExtra("index",NameIndex);
+                intent.putExtra("index",Constants.MUSICINDEX);
+
                 startActivity(intent);
+
                 break;
         }
+
+
+//        LocalBroadcastManager.getInstance(getActivity()).sendBroadcast(intentMusic);
     }
 }

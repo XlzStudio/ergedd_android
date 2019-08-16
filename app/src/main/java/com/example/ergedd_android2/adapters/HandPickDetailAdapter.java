@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.ergedd_android2.Constant.Constants;
 import com.example.ergedd_android2.R;
 import com.example.ergedd_android2.bean.BabyLookInnerBean;
 import com.example.ergedd_android2.bean.HandPicDetailBean;
@@ -62,7 +63,8 @@ public class HandPickDetailAdapter extends RecyclerView.Adapter<HandPickDetailAd
 
                 }
 
-                intent.putExtra("id",i);
+//                intent.putExtra("id",i);
+                Constants.MUSICINDEX=i;
                 intent.putParcelableArrayListExtra("play",playMusicBeans);
 
                 LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
