@@ -193,7 +193,6 @@ public class BabyHearFragment<V extends BabyHearContract.BabyHearView> extends B
 
                         HandPickService.MusicBinder binder = (HandPickService.MusicBinder) service;
                         pickService = binder.getService();
-                        mediaPlayer = binder.getPlayer();
 
                         pickService.getProgress(progressBar,progressPlayBabyhear,lenthPlayBabyhear);
                         pickService.playProgress(play,Constants.MUSICINDEX);////////////
